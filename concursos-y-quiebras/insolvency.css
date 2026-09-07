@@ -1,0 +1,115 @@
+/* Ajustes exclusivos del prototipo local de concursos y quiebras.
+   Conserva el sistema visual de Familia y evita elementos internos que no
+   forman parte de la experiencia del potencial cliente. */
+
+.insolvency-page .article-search {
+  width: min(100%, 720px);
+  margin: 2rem auto 1.35rem;
+  text-align: left;
+}
+
+.insolvency-page .article-search label {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--azul-profundo);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.insolvency-page .article-search input {
+  width: 100%;
+  min-height: 54px;
+  padding: 0.8rem 1.05rem;
+  border: 1px solid rgba(7, 27, 61, 0.2);
+  border-radius: 14px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--azul-profundo);
+  box-shadow: 0 10px 30px rgba(7, 27, 61, 0.06);
+  font: inherit;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.insolvency-page .article-search input:focus {
+  border-color: var(--dorado);
+  box-shadow: 0 0 0 4px rgba(205, 166, 91, 0.16), 0 12px 32px rgba(7, 27, 61, 0.08);
+}
+
+.insolvency-page .article-search input::placeholder {
+  color: #687181;
+}
+
+.insolvency-page [data-insolvency-archive] .article-card[hidden] {
+  display: none !important;
+}
+
+.insolvency-page .faq-question:focus,
+.insolvency-page .faq-question:focus-visible {
+  outline: 2px solid rgba(205, 166, 91, 0.58);
+  outline-offset: 3px;
+  box-shadow: none;
+}
+
+/* Contacto: la referencia aprobada centra el panel y mantiene tarjetas de
+   igual ancho, alto y jerarquía visual en escritorio y móvil. */
+.insolvency-page .contact-page-section .contact-grid {
+  display: block;
+  width: min(100%, 980px);
+  max-width: 980px !important;
+  margin-inline: auto;
+}
+
+.insolvency-page .contact-panel {
+  width: min(100%, 920px);
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.insolvency-page .contact-methods {
+  width: min(100%, 920px);
+  margin-inline: auto;
+}
+
+.insolvency-page .about-grid > div:last-child > p + p {
+  margin-top: 1rem;
+}
+
+.insolvency-page .about-grid > div:last-child > .actions {
+  margin-top: 2rem;
+}
+
+.insolvency-page .site-footer #contacto {
+  padding-bottom: 5rem;
+}
+
+.insolvency-page .article-controls[data-insolvency-controls] {
+  justify-content: center;
+}
+
+.insolvency-page .article-controls[data-insolvency-controls] .article-count {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+@media (max-width: 639px) {
+  .insolvency-page .article-search {
+    margin-top: 1.5rem;
+  }
+
+  .insolvency-page .article-search input {
+    min-height: 50px;
+    font-size: 16px;
+  }
+
+  .insolvency-page .contact-methods {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .insolvency-page .article-search input {
+    transition: none;
+  }
+}

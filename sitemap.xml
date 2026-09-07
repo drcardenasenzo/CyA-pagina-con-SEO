@@ -67,7 +67,6 @@
   <url><loc>https://www.cardenasyasociados.com.ar/articulos/declaratoria-herederos-inscribir-vender-inmueble/</loc></url>
   <url><loc>https://www.cardenasyasociados.com.ar/articulos/matrimonio-vs-union-convivencial/</loc></url>
   <url><loc>https://www.cardenasyasociados.com.ar/articulos/regimen-comunicacion-mascotas/</loc></url>
-  <!-- WAVE2:BEGIN -->
   <url><loc>https://www.cardenasyasociados.com.ar/articulos/actualizar-cuota-alimentaria-inflacion/</loc></url>
   <url><loc>https://www.cardenasyasociados.com.ar/articulos/mediacion-cuota-alimentaria-caba/</loc></url>
   <url><loc>https://www.cardenasyasociados.com.ar/articulos/cuota-alimentaria-progenitor-pierde-trabajo/</loc></url>
@@ -118,7 +117,6 @@
   <url><loc>https://www.cardenasyasociados.com.ar/articulos/heredero-no-quiere-vender-inmueble/</loc></url>
   <url><loc>https://www.cardenasyasociados.com.ar/articulos/conviviente-hereda-derechos-sucesorios/</loc></url>
   <url><loc>https://www.cardenasyasociados.com.ar/articulos/sucesion-inmueble-sin-escritura-documentacion-incompleta/</loc></url>
-  <!-- WAVE2:END -->
   <url><loc>https://www.cardenasyasociados.com.ar/en/</loc></url>
   <url><loc>https://www.cardenasyasociados.com.ar/en/articles/</loc></url>
   <url><loc>https://www.cardenasyasociados.com.ar/en/about/</loc></url>
@@ -136,4 +134,193 @@
   <url><loc>https://www.cardenasyasociados.com.ar/en/articles/recognition-enforcement-foreign-family-judgments-argentina/</loc></url>
   <url><loc>https://www.cardenasyasociados.com.ar/en/articles/foreign-divorce-judgment-effect-argentina/</loc></url>
   <url><loc>https://www.cardenasyasociados.com.ar/en/articles/foreign-custody-child-support-decisions-argentina/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/acompanante-terapeutico-cobertura/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/amparo-salud-caba-cuando-corresponde/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/cirugia-profesional-fuera-cartilla/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/cobertura-100-discapacidad-ley-24901/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/cobertura-fertilizacion-asistida/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/criopreservacion-embriones-cobertura/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/cud-obra-social-prestaciones/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/diabetes-medicamentos-reactivos-cobertura-100/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/dialisis-eritropoyetina-cobertura/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/dispositivos-ostomia-cobertura-100/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/documentacion-amparo-salud-caba/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/enfermedad-poco-frecuente-medicacion-alto-costo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/estudio-alta-complejidad-rechazado/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/fibrosis-quistica-cobertura-integral/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/fiv-icsi-rechazado-amparo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/internacion-clinica-quirurgica-cobertura/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/limite-edad-fertilidad-cobertura/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/maestra-integradora-apoyo-escolar-cobertura/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/medicacion-cronica-70-o-100/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/medicacion-quimioterapia-dolor-oncologico/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/medicacion-tratamiento-fertilidad/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/medicamento-no-incluido-pmo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/medicamentos-oncologicos-cobertura-100/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/medida-cautelar-amparo-salud/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/obesidad-cirugia-bariatrica-cobertura/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/obra-social-no-autoriza-cirugia/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/obra-social-no-cubre-medicamento-alto-costo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/obra-social-no-cubre-tratamiento/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/obra-social-ofrece-protesis-distinta/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/obra-social-reduce-terapias-discapacidad/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/ovodonacion-gametos-donados-cobertura/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/personas-trasplantadas-cobertura-100/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/prepaga-demora-autorizacion-medica/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/prepaga-posterga-cirugia-indicada/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/prepaga-suspende-medicacion-autorizada/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/prestador-fuera-cartilla-discapacidad/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/protesis-interna-cobertura-100/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/reclamo-superintendencia-promesa-o-amparo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/sensor-continuo-glucosa-cobertura/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/silencio-obra-social-prepaga/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/transporte-discapacidad-cobertura/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/articulos/tres-tratamientos-alta-complejidad/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/contacto/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/nosotros/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/servicios/amparo-urgente-medida-cautelar/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/servicios/cirugias-protesis-estudios/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/servicios/diabetes-trasplantes-coberturas-especiales/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/servicios/discapacidad-cobertura-integral/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/servicios/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/servicios/medicamentos-oncologicos-alto-costo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/amparos-de-salud/servicios/reproduccion-medicamente-asistida/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/abandono-trabajo-intimacion-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/acuerdo-desvinculacion-articulo-241-impugnado/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/base-calculo-indemnizacion-articulo-245/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/certificados-articulo-80-plazo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/comisiones-premios-horas-extra-indemnizacion/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/demanda-contra-socios-directores-laboral/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/denuncia-hostigamiento-violencia-laboral/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/despido-discriminatorio-defensa-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/despido-embarazo-maternidad-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/documentacion-audiencia-seclo-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/empleador-recibio-citacion-seclo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/empleador-recibio-telegrama-laboral-caba/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/empresa-recibio-demanda-laboral-caba/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/enfermedad-reincorporacion-tareas-compatibles/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/homologacion-acuerdo-seclo-efectos/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/impugnacion-despido-con-causa-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/intimacion-registracion-laboral-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/ius-variandi-despido-indirecto-defensa/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/legitimacion-pasiva-demanda-laboral-empresa/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/negativa-tareas-telegrama-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/negativas-contestacion-demanda-laboral/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/notificacion-seclo-domicilio-fiscal-electronico/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/oferta-acuerdo-seclo-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/plazo-contestar-demanda-laboral-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/plazo-responder-telegrama-laboral-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/preaviso-integracion-mes-despido/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/preparar-audiencia-seclo-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/prueba-contestacion-demanda-laboral/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/reclamo-categoria-convenio-colectivo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/reclamo-comisiones-bonos-remuneracion-variable/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/reclamo-horas-extra-prueba-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/reclamo-indemnizacion-despido-sin-causa/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/reclamo-trabajo-no-registrado-defensa-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/registracion-deficiente-fecha-salario/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/responsabilidad-solidaria-subcontratacion-articulo-30/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/salarios-enfermedad-inculpable-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/seclo-sin-acuerdo-que-sigue/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/sentencia-apelacion-ejecucion-laboral/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/telegrama-diferencias-salariales-horas-extra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/telegramas-documentos-juicio-laboral/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/trabajador-se-considera-despedido-telegrama/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/articulos/tutela-sindical-reclamo-empleador/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/contacto/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/nosotros/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/servicios/conflictos-laborales-complejos/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/servicios/demandas-juicios-laborales/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/servicios/despidos-indemnizaciones-reclamadas/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/servicios/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/servicios/reclamos-salariales-registracion/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/servicios/seclo-conciliaciones-laborales/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/laboral-empleadores/servicios/telegramas-laborales-intimaciones/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/acciones-de-responsabilidad-en-la-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/acreedor-extranjero-en-un-concurso-o-quiebra-argentina/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/acreedor-hipotecario-o-prendario-frente-al-concurso-del-deudor/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/actos-realizados-antes-de-la-quiebra-y-periodo-de-sospecha/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/acuerdo-preventivo-extrajudicial-cuando-puede-utilizarlo-una-empresa/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/avenimiento-como-forma-de-concluir-la-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/cesacion-de-pagos-que-significa-en-la-ley-de-concursos-y-quiebras/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/como-cobrar-si-el-deudor-se-presento-en-concurso-preventivo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/como-se-demuestra-la-cesacion-de-pagos-en-un-pedido-de-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/conclusion-de-la-quiebra-por-pago-total/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/concurso-preventivo-de-una-empresa-en-caba-cuando-puede-ser-una-alternativa/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/concurso-preventivo-y-embargos-contra-una-empresa/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/concursos-de-sociedades-vinculadas-o-grupos-economicos/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/continuidad-de-la-actividad-durante-el-concurso-preventivo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/contratos-vigentes-de-una-empresa-concursada/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/credito-con-sentencia-dentro-de-un-concurso-preventivo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/credito-declarado-inadmisible-alternativas-del-acreedor/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/creditos-laborales-en-concursos-y-quiebras/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/cuando-conviene-evaluar-el-concurso-preventivo-de-una-sociedad/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/defensa-ante-un-pedido-de-quiebra-por-una-deuda-discutida/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/deudas-con-proveedores-en-el-concurso-de-una-empresa/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/deudas-fiscales-dentro-de-un-concurso-preventivo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/diferencia-entre-falta-de-liquidez-y-cesacion-de-pagos/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/diferencia-entre-pedido-de-quiebra-y-quiebra-declarada/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/diferencias-entre-ape-y-concurso-preventivo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/distribucion-de-fondos-en-una-quiebra-cuando-cobra-el-acreedor/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/documentacion-para-proponer-una-reestructuracion-mediante-ape/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/empresa-que-no-puede-pagar-sus-deudas-cuando-existe-cesacion-de-pagos/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/empresas-con-dificultades-financieras-negociacion-mediante-un-ape/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/extension-de-la-quiebra-cuando-puede-alcanzar-a-otra-persona/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/garantias-personales-de-socios-frente-al-concurso-de-la-empresa/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/hechos-reveladores-de-cesacion-de-pagos/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/homologacion-del-acuerdo-preventivo-efectos-para-la-empresa/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/impugnacion-de-un-acuerdo-preventivo-extrajudicial/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/incumplimiento-del-acuerdo-preventivo-y-posible-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/informe-individual-de-la-sindicatura-que-puede-hacer-el-acreedor/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/inhabilitacion-despues-de-una-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/la-quiebra-elimina-todas-las-deudas/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/mayorias-necesarias-para-homologar-un-acuerdo-preventivo-extrajudicial/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/observacion-de-creditos-presentados-por-otros-acreedores/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/pedido-de-quiebra-basado-en-un-cheque-rechazado/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/pedido-de-quiebra-por-una-sentencia-impaga/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/pedido-de-quiebra-utilizado-como-mecanismo-de-cobro/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/periodo-de-exclusividad-que-debe-conseguir-la-empresa-concursada/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/privilegios-concursales-por-que-algunos-acreedores-cobran-antes/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/propuesta-de-pago-a-los-acreedores-en-un-concurso-preventivo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/puede-una-empresa-concursarse-despues-de-recibir-un-pedido-de-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/que-acreedores-quedan-alcanzados-por-un-ape-homologado/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/que-bienes-quedan-alcanzados-por-una-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/que-efectos-produce-la-sentencia-que-declara-la-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/que-ocurre-con-el-sueldo-o-los-ingresos-despues-de-la-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/que-ocurre-si-la-deuda-del-pedido-de-quiebra-ya-fue-pagada/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/que-pasa-con-los-juicios-laborales-durante-el-concurso-preventivo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/que-significa-verificar-la-causa-el-monto-y-el-privilegio-de-un-credito/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/que-sucede-con-las-ejecuciones-cuando-se-abre-un-concurso-preventivo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/que-sucede-si-la-empresa-no-obtiene-las-mayorias-necesarias/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/quiebra-de-una-persona-humana-en-argentina-efectos-principales/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/quiebra-de-una-sociedad-y-responsabilidad-de-sus-socios/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/quiebra-propia-cuando-puede-solicitarla-una-persona/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/quiebra-y-bienes-gananciales/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/quiebra-y-vivienda-familiar/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/recibi-un-pedido-de-quiebra-que-significa-y-por-que-actuar-rapidamente/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/requisitos-del-concurso-preventivo-coordinacion-juridica-y-contable/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/responsabilidad-de-directores-ante-la-insolvencia-empresarial/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/suspension-de-acciones-durante-la-homologacion-de-un-ape/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/un-solo-acreedor-puede-pedir-la-quiebra-de-una-empresa/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/venta-de-bienes-antes-de-la-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/verificacion-de-creditos-por-que-el-credito-no-ingresa-automaticamente/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/verificacion-de-facturas-en-el-concurso-de-un-cliente/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/verificacion-de-un-credito-basado-en-cheques-o-pagares/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/verificacion-tardia-despues-de-vencer-el-plazo/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/articulos/verificacion-tempestiva-y-verificacion-tardia-diferencias-importantes/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/contacto/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/nosotros/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/servicios/acuerdo-preventivo-extrajudicial/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/servicios/concurso-preventivo-empresas/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/servicios/defensa-pedido-quiebra/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/servicios/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/servicios/quiebra-personas-empresas/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/servicios/socios-administradores-garantes/</loc></url>
+  <url><loc>https://www.cardenasyasociados.com.ar/concursos-y-quiebras/servicios/verificacion-recuperacion-creditos/</loc></url>
 </urlset>
