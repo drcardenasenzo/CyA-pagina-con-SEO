@@ -1,0 +1,25 @@
+/* Capa local para la landing de defensa del consumidor.
+   Conserva el sistema visual aprobado del sitio y agrega filtros y ajustes finos. */
+
+.consumer-page [data-consumer-archive] .article-card[hidden] { display: none !important; }
+
+.consumer-page .faq-question:focus,
+.consumer-page .faq-question:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.consumer-page #nosotros .actions { margin-top: 2.4rem; }
+.consumer-page .about-grid > div:last-child > .btn { margin-top: 1.35rem; }
+
+.consumer-page .article-controls[data-consumer-controls] { justify-content: center; }
+
+.consumer-page .article-controls[data-consumer-controls] .article-count {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.consumer-page .service-hub-grid .service-card,
+.consumer-page .employer-service-cards .service-card { height: 100%; }
+
+.consumer-page .service-closing { margin-top: 1.25rem; }
