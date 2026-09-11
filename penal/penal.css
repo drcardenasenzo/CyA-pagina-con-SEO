@@ -1,0 +1,27 @@
+
+.penal-page .article-card img { background:#efe4ce; }
+.penal-page .article-card-body { min-height: 245px; }
+.penal-page .service-hub-grid .service-card { min-height: 0; }
+.penal-page .article-content p { text-align: justify; text-justify: inter-word; }
+.penal-page .service-intro, .penal-page .service-closing { max-width: 900px; text-align: justify; text-justify: inter-word; }
+.penal-page .page-hero .breadcrumbs { margin-bottom: 1rem; }
+.penal-page .article-controls { justify-content:center; }
+@media (min-width: 768px) {
+  .penal-page .site-footer #contacto .contacto-container { min-height: 356px; }
+}
+@media (min-width:900px) {
+  .penal-page #servicios .employer-service-cards[data-service-stack] .card,
+  .penal-page.service-page [data-service-article-stack] .article-card { position:relative; top:auto; height:100%; }
+  .penal-page .home-article-grid .article-card { height:100%; }
+}
+@media (min-width:768px) {
+  /* En escritorio, las tarjetas de artículos siguen la densidad visual del sitio de Familia. */
+  .penal-page .home-article-grid .article-card-body,
+  .penal-page [data-article-archive] .article-card-body { min-height:0; }
+  .penal-page .home-article-grid .article-card-body p,
+  .penal-page [data-article-archive] .article-card-body p { margin-top:0; }
+}
+@media (max-width:767px) {
+  .penal-page .article-card-body { min-height:0; }
+  .penal-page .about-grid .portrait { width:min(100%,250px); justify-self:center; margin-inline:auto; }
+}

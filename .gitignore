@@ -10,3 +10,7 @@
 # Archivos de referencia no publicados.
 /assets/img/articles/_originales-retiradas/
 /assets/img/site/testimonios-ilustrativos/
+
+# Informe interno de la revisión editorial de la landing penal.
+/penal/REVISION-EDITORIAL.md
+/penal/assets/img/articles/_legacy-svg/
