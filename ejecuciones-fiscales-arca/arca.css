@@ -1,0 +1,36 @@
+
+.arca-page .article-card img { background:#efe4ce; }
+.arca-page .service-hub-grid .service-card { min-height:0; }
+.arca-page .article-card-body { min-height:245px; }
+.arca-page .article-controls { justify-content:center; }
+.arca-page .service-intro,
+.arca-page .about-grid > div:last-child > p,
+.arca-page .contact-lead,
+.arca-page .article-content > p,
+.arca-page .article-content > h2 + p,
+.arca-page .article-content > h2 + p + p,
+.arca-page .faq-answer p { text-align:justify; text-justify:inter-word; }
+.arca-page .service-copy .service-intro + .service-intro { margin-top:1rem; }
+.arca-page .service-faq-title { margin-top:2.25rem; }
+.arca-page .article-content .norms p { margin-top:1rem; }
+.arca-page .article-content .norms li { margin-bottom:.55rem; }
+.arca-page .placeholder-copy { color:#5c6571; font-style:italic; }
+.arca-page .editorial-placeholder { margin:0 auto 2.5rem; padding:2rem; border:1px solid rgba(205,167,82,.45); border-radius:18px; background:#f8f3e8; }
+.arca-page .editorial-placeholder h2 { margin:.4rem 0 .8rem; }
+.arca-page .article-image-pending img { object-fit:cover; background:#efe4ce; }
+@media (min-width:768px) {
+  .arca-page .site-footer #contacto .contacto-container { min-height:356px; }
+  .arca-page .home-article-grid .article-card-body,
+  .arca-page [data-article-archive] .article-card-body { min-height:0; }
+  .arca-page .home-article-grid .article-card-body p,
+  .arca-page [data-article-archive] .article-card-body p { margin-top:0; }
+}
+@media (min-width:900px) {
+  .arca-page #servicios .employer-service-cards[data-service-stack] .card,
+  .arca-page.service-page [data-service-article-stack] .article-card { position:relative; top:auto; height:100%; }
+  .arca-page .home-article-grid .article-card { height:100%; }
+}
+@media (max-width:767px) {
+  .arca-page .article-card-body { min-height:0; }
+  .arca-page .about-grid .portrait { width:min(100%,250px); justify-self:center; margin-inline:auto; }
+}
