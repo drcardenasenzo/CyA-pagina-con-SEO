@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#1E3A8A">
+  <meta name="theme-color" content="#071B3D">
   
   <!-- Configuración de icono para instalación en pantalla de inicio (Android / iOS) -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,17 +17,18 @@
   <link rel="apple-touch-icon-precomposed" href="logo.jpg">
   <link rel="manifest" href='data:application/manifest+json,{"name":"Gestor Cárdenas y Asociados","short_name":"Gestor CyA","start_url":".","display":"standalone","background_color":"#f0f4f8","theme_color":"#1E3A8A","icons":[{"src":"logo.jpg","sizes":"192x192 512x512","type":"image/jpeg","purpose":"any maskable"}]}'>
 
-  <title>Gestor | Cárdenas y Asociados</title>
+  <title>Gestión interna | Cárdenas y Asociados</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
     
     :root { 
-      --primary-color: #1E3A8A; 
-      --secondary-color: #D4AF37; 
-      --background-color: #f0f4f8; 
-      --text-color: #4B5E6A; 
+      --primary-color: #071b3d;
+      --secondary-color: #cda65b;
+      --background-color: #fcfaf6;
+      --text-color: #36404b;
     }
     
     * { 
@@ -49,7 +50,7 @@
     
     body { 
       font-family: 'Inter', system-ui, -apple-system, sans-serif; 
-      background-color: var(--background-color); 
+      background: linear-gradient(180deg, #fcfaf6 0%, #f6f0e6 100%);
       color: var(--text-color); 
       overflow-x: hidden; 
     }
@@ -70,9 +71,9 @@
     
     .card { 
       background: #ffffff; 
-      border: 1px solid #e2e8f0; 
+      border: 1px solid rgba(7, 27, 61, 0.12);
       border-radius: 1.25rem; 
-      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05); 
+      box-shadow: 0 18px 45px rgba(7, 27, 61, 0.08);
       transition: all 0.2s ease;
     }
     
@@ -123,7 +124,7 @@
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      background: linear-gradient(135deg, #e2e8f0 0%, #f0f4f8 100%);
+      background: linear-gradient(135deg, #071b3d 0%, #102d55 55%, #071b3d 100%);
     }
     
     #login-screen.hidden-force { display: none !important; }
@@ -133,6 +134,31 @@
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .app-header {
+      background: rgba(7, 27, 61, 0.98) !important;
+      border-color: rgba(205, 166, 91, 0.3) !important;
+      box-shadow: 0 10px 35px rgba(7, 27, 61, 0.18) !important;
+    }
+
+    .app-nav {
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-color: rgba(205, 166, 91, 0.18) !important;
+    }
+
+    .app-nav [data-view] { color: rgba(255, 255, 255, 0.76) !important; }
+    .app-nav [data-view].bg-white { color: var(--primary-color) !important; }
+
+    .export-action {
+      border-color: rgba(205, 166, 91, 0.5) !important;
+      color: var(--primary-color) !important;
+      background: #fff !important;
+    }
+
+    .export-action:hover {
+      background: #f6f0e6 !important;
+      border-color: var(--secondary-color) !important;
     }
   </style>
 </head>
@@ -148,10 +174,10 @@
           <img src="logo.jpg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/1E3A8A/D4AF37?text=CyA'" alt="Logo Cárdenas y Asociados" class="h-full w-full rounded-xl object-contain">
         </div>
         <h1 class="flex flex-wrap items-center justify-center gap-2 text-2xl font-black text-slate-800 tracking-tight sm:text-3xl">
-          <span class="text-[var(--primary-color)]">Gestor</span>
-          <span class="text-[var(--secondary-color)]">CyA</span>
+          <span class="text-[var(--primary-color)]">Gestión</span>
+          <span class="text-[var(--secondary-color)]">interna</span>
         </h1>
-        <p class="mt-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Control Financiero Interno</p>
+        <p class="mt-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Cárdenas y Asociados</p>
       </div>
 
       <form id="login-form" class="space-y-5">
@@ -193,7 +219,7 @@
 
   <!-- Aplicación Principal -->
   <div id="app-container" class="hidden min-h-screen pb-12 pt-[118px]">
-    <header class="fixed inset-x-0 top-0 z-40 border-b border-slate-200/80 bg-white/90 shadow-sm backdrop-blur-md">
+    <header class="app-header fixed inset-x-0 top-0 z-40 border-b border-slate-200/80 bg-white/90 shadow-sm backdrop-blur-md">
       <div class="mx-auto flex max-w-5xl flex-col gap-2.5 px-4 py-3 sm:px-6">
         <!-- Fila superior: Logo e Identidad + Botón Cerrar Sesión -->
         <div class="flex items-center justify-between">
@@ -202,19 +228,19 @@
               <img src="logo.jpg" onerror="this.onerror=null;this.src='https://placehold.co/44x44/1E3A8A/D4AF37?text=CyA'" alt="" class="h-full w-full rounded-xl object-contain p-1">
             </div>
             <div class="min-w-0">
-              <p class="truncate text-base font-black text-[var(--primary-color)] leading-tight">Gestor</p>
+              <p class="truncate text-base font-black text-white leading-tight">Gestión</p>
               <p class="truncate text-[10px] font-bold uppercase tracking-wider text-[var(--secondary-color)]">Cárdenas y Asociados</p>
             </div>
           </div>
 
-          <button id="logout-button" aria-label="Cerrar sesión" title="Cerrar sesión" class="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 text-slate-500 transition hover:bg-red-50 hover:border-red-200 hover:text-red-600">
+          <button id="logout-button" aria-label="Cerrar sesión" title="Cerrar sesión" class="flex h-9 w-9 items-center justify-center rounded-xl border border-white/20 text-white/75 transition hover:bg-red-50 hover:border-red-200 hover:text-red-600">
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
           </button>
         </div>
 
         <!-- Fila inferior: Barra de Navegación Principal -->
         <div class="flex items-center justify-center sm:justify-start">
-          <nav aria-label="Navegación principal" class="flex w-full sm:w-auto items-center justify-center gap-1 rounded-2xl bg-slate-100/80 p-1.5 ring-1 ring-slate-200/60 overflow-x-auto">
+          <nav aria-label="Navegación principal" class="app-nav flex w-full sm:w-auto items-center justify-center gap-1 rounded-2xl bg-slate-100/80 p-1.5 ring-1 ring-slate-200/60 overflow-x-auto">
             <button id="nav-home" data-view="home" title="Inicio" class="flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-extrabold transition whitespace-nowrap">
               <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
               <span>Inicio</span>
@@ -222,14 +248,6 @@
             <button id="nav-register" data-view="register" title="Registro" class="flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-extrabold transition whitespace-nowrap">
               <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
               <span>Registro</span>
-            </button>
-            <button id="nav-metrics" data-view="metrics" title="Métricas" class="flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-extrabold transition whitespace-nowrap">
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 19V5m0 14h16M8 16v-5m4 5V7m4 9v-3"/></svg>
-              <span>Métricas</span>
-            </button>
-            <button id="nav-calculator" data-view="calculator" title="Calculadora" class="flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-extrabold transition whitespace-nowrap">
-              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-              <span>Calculadora</span>
             </button>
           </nav>
         </div>
@@ -239,14 +257,18 @@
     <main class="mx-auto max-w-5xl px-4 pt-6 sm:px-6">
       <!-- VISTA INICIO / DASHBOARD -->
       <section id="home-view" class="view-content space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200/60 pb-4">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-slate-200/60 pb-4">
           <div>
             <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1 text-[11px] font-bold tracking-wide text-amber-700 ring-1 ring-amber-200/60">
               <span class="h-2 w-2 rounded-full bg-amber-500"></span> RESUMEN
             </span>
             <h2 id="current-title" class="mt-2 text-2xl font-black tracking-tight text-[var(--primary-color)] sm:text-3xl">Flujo de Caja</h2>
           </div>
-          <p class="text-xs font-semibold text-slate-400">Valores expresados en ARS</p>
+          <div class="flex flex-wrap items-center gap-2">
+            <p class="mr-1 text-xs font-semibold text-slate-400">Valores expresados en ARS</p>
+            <button id="export-records-pdf" type="button" class="export-action inline-flex items-center gap-1.5 rounded-xl border px-3 py-2 text-xs font-extrabold shadow-sm transition">Exportar PDF</button>
+            <button id="export-records-excel" type="button" class="inline-flex items-center gap-1.5 rounded-xl bg-[var(--primary-color)] px-3 py-2 text-xs font-extrabold text-white shadow-sm transition hover:bg-[#102d55]">Exportar Excel</button>
+          </div>
         </div>
 
         <!-- Cards KPi -->
@@ -401,7 +423,7 @@
       </section>
 
       <!-- VISTA MÉTRICAS / RENTABILIDAD COMERCIAL -->
-      <section id="metrics-view" class="view-content hidden space-y-6">
+      <section id="metrics-view" class="view-content hidden space-y-6" hidden aria-hidden="true">
         <div class="flex flex-col gap-4 border-b border-slate-200/60 pb-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1 text-[11px] font-bold tracking-wide text-amber-700 ring-1 ring-amber-200/60">
@@ -516,7 +538,7 @@
       </section>
 
       <!-- VISTA CALCULADORA DE HONORARIOS (LEY 27.423 - ART. 21) -->
-      <section id="calculator-view" class="view-content hidden space-y-6">
+      <section id="calculator-view" class="view-content hidden space-y-6" hidden aria-hidden="true">
         <div class="border-b border-slate-200/60 pb-4">
           <span class="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1 text-[11px] font-bold tracking-wide text-amber-700 ring-1 ring-amber-200/60">
             <span class="h-2 w-2 rounded-full bg-amber-500"></span> LEY 27.423 - ARTÍCULO 21
@@ -822,13 +844,12 @@
     const isPending = (record) => state.pendingArchives.has(pendingKey(record.type, record.id));
 
     function setView(view) {
+      if (!['home', 'register'].includes(view)) view = 'home';
       state.view = view;
       el("home-view").classList.toggle("hidden", view !== "home");
       el("register-view").classList.toggle("hidden", view !== "register");
-      el("metrics-view").classList.toggle("hidden", view !== "metrics");
-      el("calculator-view").classList.toggle("hidden", view !== "calculator");
 
-      ["home", "register", "metrics", "calculator"].forEach((name) => {
+      ["home", "register"].forEach((name) => {
         const button = el("nav-" + name);
         if (button) {
           const active = name === view;
@@ -839,8 +860,6 @@
         }
       });
       if (view === "register") renderRegistry();
-      if (view === "metrics") renderMetrics();
-      if (view === "calculator") renderCalculator();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -1566,8 +1585,6 @@
     function renderAll() {
       renderDashboard();
       if (state.view === "register") renderRegistry();
-      if (state.view === "metrics") renderMetrics();
-      if (state.view === "calculator") renderCalculator();
     }
 
     function updateDurationVisibility() {
@@ -1848,6 +1865,132 @@
       });
     }
 
+    function cashSummaryForMonth(month) {
+      const income = state.incomes.filter((record) => !record.isSavings && isEffectiveInMonth(record, month)).reduce((sum, record) => sum + Number(record.amount || 0), 0);
+      const savings = state.incomes.filter((record) => record.isSavings && isEffectiveInMonth(record, month)).reduce((sum, record) => sum + Number(record.amount || 0), 0);
+      const expenses = state.expenses.filter((record) => isEffectiveInMonth(record, month)).reduce((sum, record) => sum + Number(record.amount || 0), 0);
+      return { income, savings, expenses, net: income - expenses };
+    }
+
+    function orderedCashRecords() {
+      return allRecords().slice().sort((a, b) => String(a.startMonth || '').localeCompare(String(b.startMonth || '')) || String(a.concept || '').localeCompare(String(b.concept || ''), 'es'));
+    }
+
+    function exportRecordsExcel() {
+      if (!window.XLSX) { showToast('La herramienta de Excel todavía no está disponible.', 'error'); return; }
+      const rows = [];
+      rows.push(['Cárdenas y Asociados - Gestión interna']);
+      rows.push(['Generado', new Date().toLocaleString('es-AR')]);
+      rows.push([]);
+      rows.push(['Resumen mensual', 'Ingresos operativos', 'Egresos', 'Neto', 'Ahorro']);
+      for (let index = 0; index < 6; index += 1) {
+        const month = addMonths(currentMonth(), index);
+        const summary = cashSummaryForMonth(month);
+        rows.push([monthName(month), summary.income, summary.expenses, summary.net, summary.savings]);
+      }
+      rows.push([]);
+      rows.push(['Tipo', 'Concepto', 'Monto mensual', 'Inicio', 'Modalidad', 'Cuotas', 'Estado', 'Destino']);
+      orderedCashRecords().forEach((record) => {
+        rows.push([
+          record.type === 'income' ? 'Ingreso' : 'Egreso',
+          record.concept || '',
+          Number(record.amount || 0),
+          record.startMonth || '',
+          record.durationType === 'fixed' ? 'Cuota fija' : 'Recurrente',
+          record.durationType === 'fixed' ? Number(record.installments || 0) : '',
+          isArchived(record) ? 'Archivado' : 'Activo',
+          record.type === 'income' && record.isSavings ? 'Ahorro' : 'Flujo operativo'
+        ]);
+      });
+      const workbook = XLSX.utils.book_new();
+      const sheet = XLSX.utils.aoa_to_sheet(rows);
+      sheet['!cols'] = [{ wch: 28 }, { wch: 34 }, { wch: 18 }, { wch: 18 }, { wch: 18 }, { wch: 16 }, { wch: 16 }, { wch: 20 }];
+      XLSX.utils.book_append_sheet(workbook, sheet, 'Gestión');
+      XLSX.writeFile(workbook, `gestion-cya-${currentMonth()}.xlsx`);
+      showToast('Archivo Excel generado.', 'success');
+    }
+
+    function exportRecordsPdf() {
+      if (!window.jspdf?.jsPDF) { showToast('La herramienta de PDF todavía no está disponible.', 'error'); return; }
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({ unit: 'mm', format: 'a4' });
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const left = 15;
+      const right = pageWidth - 15;
+      let y = 45;
+      const ensureSpace = (height) => {
+        if (y + height <= pageHeight - 18) return;
+        pdf.addPage();
+        y = 20;
+      };
+      const write = (value, { size = 9, bold = false, color = [54, 64, 75], gap = 4 } = {}) => {
+        pdf.setFont('helvetica', bold ? 'bold' : 'normal');
+        pdf.setFontSize(size);
+        pdf.setTextColor(...color);
+        const lines = pdf.splitTextToSize(String(value), right - left);
+        ensureSpace(lines.length * (size * 0.48) + gap);
+        pdf.text(lines, left, y);
+        y += lines.length * (size * 0.48) + gap;
+      };
+      const line = () => {
+        ensureSpace(8);
+        pdf.setDrawColor(218, 208, 188);
+        pdf.line(left, y, right, y);
+        y += 7;
+      };
+
+      pdf.setFillColor(7, 27, 61);
+      pdf.rect(0, 0, pageWidth, 34, 'F');
+      pdf.setFillColor(205, 166, 91);
+      pdf.rect(0, 34, pageWidth, 2.5, 'F');
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(18);
+      pdf.setTextColor(255, 255, 255);
+      pdf.text('Cárdenas y Asociados', left, 16);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(9);
+      pdf.text('Gestión interna - resumen y registro de movimientos', left, 24);
+      pdf.setTextColor(7, 27, 61);
+      write(`Informe generado el ${new Date().toLocaleString('es-AR')}`, { size: 8, color: [105, 114, 124], gap: 7 });
+
+      const current = cashSummaryForMonth(currentMonth());
+      write(`Resumen de ${monthName(currentMonth())}`, { size: 13, bold: true, color: [7, 27, 61], gap: 5 });
+      write(`Ingresos operativos: ${money(current.income)} | Egresos: ${money(current.expenses)} | Neto: ${money(current.net)} | Ahorro: ${money(current.savings)}`, { size: 9, color: [54, 64, 75], gap: 7 });
+      line();
+
+      write('Proyección de los próximos seis meses', { size: 13, bold: true, color: [7, 27, 61], gap: 5 });
+      for (let index = 0; index < 6; index += 1) {
+        const month = addMonths(currentMonth(), index);
+        const summary = cashSummaryForMonth(month);
+        write(`${monthName(month)} - ingresos: ${money(summary.income)} - egresos: ${money(summary.expenses)} - neto: ${money(summary.net)} - ahorro: ${money(summary.savings)}`, { size: 8.5, gap: 3.5 });
+      }
+      line();
+
+      write('Registro completo', { size: 13, bold: true, color: [7, 27, 61], gap: 5 });
+      const records = orderedCashRecords();
+      if (!records.length) {
+        write('No hay ingresos ni egresos registrados todavía.', { size: 9, color: [105, 114, 124] });
+      } else {
+        records.forEach((record) => {
+          const type = record.type === 'income' ? (record.isSavings ? 'Ingreso destinado a ahorro' : 'Ingreso') : 'Egreso';
+          const duration = record.durationType === 'fixed' ? `cuota fija, ${Number(record.installments || 0)} cuotas` : 'recurrente';
+          const status = isArchived(record) ? 'archivado' : 'activo';
+          write(`${type}: ${record.concept || 'Sin concepto'} - ${money(record.amount)} mensuales - inicia ${monthName(record.startMonth || currentMonth())} - ${duration} - ${status}.`, { size: 8.5, gap: 4 });
+        });
+      }
+      const totalPages = pdf.getNumberOfPages();
+      for (let page = 1; page <= totalPages; page += 1) {
+        pdf.setPage(page);
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(7);
+        pdf.setTextColor(105, 114, 124);
+        pdf.text(`Gestión interna - Cárdenas y Asociados - Página ${page} de ${totalPages}`, left, pageHeight - 9);
+      }
+      pdf.save(`gestion-cya-${currentMonth()}.pdf`);
+      showToast('Informe PDF generado.', 'success');
+    }
+
     function exportMetricsPdf() {
       if (!window.jspdf?.jsPDF) { showToast("La herramienta de PDF todavía no está disponible.", "error"); return; }
       const summary = calculateMetrics();
@@ -2013,42 +2156,12 @@
       renderRegistry();
     });
 
-    document.querySelectorAll("[data-metrics-period]").forEach((button) => button.addEventListener("click", () => {
-      state.metricsPeriod = button.dataset.metricsPeriod;
-      renderMetrics();
-    }));
-    el("metrics-add-data").addEventListener("click", openMetricsDataMenu);
-    el("metrics-export-pdf").addEventListener("click", exportMetricsPdf);
-    el("metrics-client-search").addEventListener("input", (event) => {
-      state.metricsSearch = event.target.value;
-      renderMetrics();
-    });
+    el("export-records-pdf").addEventListener("click", exportRecordsPdf);
+    el("export-records-excel").addEventListener("click", exportRecordsExcel);
 
     el("entry-duration").addEventListener("change", updateDurationVisibility);
     el("entry-form").addEventListener("submit", saveEntry);
     el("entry-back-button").addEventListener("click", () => closeEntry());
-
-    // Event listeners para la sección CALCULADORA
-    attachCurrencyMask(el("calc-uma"));
-    attachCurrencyMask(el("calc-base"));
-    attachCurrencyMask(el("calc-custom-monto"));
-
-    el("calc-btn-calculate").addEventListener("click", handleCalculatorSubmit);
-
-    document.querySelectorAll("input[name='calc-monto-opt']").forEach((radio) => {
-      radio.addEventListener("change", (e) => {
-        const isCustom = e.target.value === "custom";
-        el("calc-custom-monto-wrap").classList.toggle("hidden", !isCustom);
-        renderCalculatorTable();
-      });
-    });
-
-    el("calc-custom-monto").addEventListener("input", renderCalculatorTable);
-    el("calc-cuotas").addEventListener("input", renderCalculatorTable);
-    el("calc-modalidad-uma").addEventListener("change", renderCalculatorTable);
-    el("calc-start-month").addEventListener("change", renderCalculatorTable);
-    el("calc-rango-dias").addEventListener("change", renderCalculatorTable);
-    el("calc-btn-pdf").addEventListener("click", exportCalculatorPdf);
 
     window.addEventListener("popstate", () => { if (state.entryOpen) closeEntry(false); });
     window.addEventListener("keydown", (e) => { if (e.key === "Escape" && state.entryOpen) closeEntry(); });
