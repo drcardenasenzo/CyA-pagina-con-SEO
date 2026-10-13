@@ -160,6 +160,13 @@
       background: #f6f0e6 !important;
       border-color: var(--secondary-color) !important;
     }
+
+    .budget-input { width: 100%; border: 1px solid #cbd5e1; border-radius: .75rem; background: #fff; padding: .75rem .9rem; font-size: .875rem; color: var(--primary-color); }
+    .budget-preview { background: #fbf7ef; border-top: 5px solid #0a1f52; border-radius: .25rem; box-shadow: 0 12px 32px rgba(7, 27, 61, .12); color: #22293a; }
+    .budget-preview h3, .budget-preview .budget-amount { font-family: Georgia, 'Times New Roman', serif; }
+    .budget-preview-label { color: #0a1f52; font-size: .68rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+    .budget-preview-label::after { content: ''; display: block; width: 3rem; height: 1px; margin-top: .3rem; background: #c99614; }
+    @media (max-width: 420px) { .app-nav { gap: .12rem; padding: .25rem; } .app-nav [data-view] { font-size: .62rem; gap: .15rem; padding: .5rem .22rem; } .app-nav [data-view] svg { width: .78rem; height: .78rem; flex: none; } }
   </style>
 </head>
 <body class="min-h-screen antialiased selection:bg-[var(--secondary-color)] selection:text-slate-900">
@@ -248,6 +255,14 @@
             <button id="nav-register" data-view="register" title="Registro" class="flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-extrabold transition whitespace-nowrap">
               <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
               <span>Registro</span>
+            </button>
+            <button id="nav-links" data-view="links" title="Links" class="flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-extrabold transition whitespace-nowrap">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 13a5 5 0 007.07 0l3-3a5 5 0 00-7.07-7.07l-1.72 1.71m2.72 6.36a5 5 0 00-7.07 0l-3 3A5 5 0 0011 21.07l1.71-1.71"/></svg>
+              <span>Links</span>
+            </button>
+            <button id="nav-budgets" data-view="budgets" title="Presupuestos" class="flex flex-1 sm:flex-initial items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-xs font-extrabold transition whitespace-nowrap">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 3h8l4 4v14H4V3h4zm8 0v5h4M8 12h8M8 16h8"/></svg>
+              <span>Presupuestos</span>
             </button>
           </nav>
         </div>
@@ -419,6 +434,63 @@
           </div>
 
           <div id="records-list" class="divide-y divide-slate-100"></div>
+        </div>
+      </section>
+
+      <!-- LINKS PÚBLICOS DEL ESTUDIO -->
+      <section id="links-view" class="view-content hidden space-y-6">
+        <div class="border-b border-slate-200/60 pb-4">
+          <span class="inline-flex rounded-full bg-amber-50 px-3 py-1 text-[11px] font-bold tracking-wide text-amber-700 ring-1 ring-amber-200/60">ACCESOS DIRECTOS</span>
+          <h2 class="mt-2 text-2xl font-black tracking-tight text-[var(--primary-color)] sm:text-3xl">Links del estudio</h2>
+          <p class="mt-1 text-sm text-slate-500">Abrí una página o copiá su dirección para compartirla.</p>
+        </div>
+        <div id="site-links-list" class="grid gap-3 sm:grid-cols-2"></div>
+      </section>
+
+      <!-- PRESUPUESTOS: FORMULARIO EFÍMERO, SIN GUARDADO REMOTO -->
+      <section id="budgets-view" class="view-content hidden space-y-6">
+        <div class="border-b border-slate-200/60 pb-4">
+          <span class="inline-flex rounded-full bg-amber-50 px-3 py-1 text-[11px] font-bold tracking-wide text-amber-700 ring-1 ring-amber-200/60">HONORARIOS PROFESIONALES</span>
+          <h2 class="mt-2 text-2xl font-black tracking-tight text-[var(--primary-color)] sm:text-3xl">Presupuestos</h2>
+          <p class="mt-1 text-sm text-slate-500">Completá los datos y descargá un PDF institucional. El formulario no se guarda en el Gestor.</p>
+        </div>
+        <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
+          <form id="budget-form" class="card space-y-5 p-5 sm:p-6">
+            <div>
+              <label for="budget-scope" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Objeto o etapa presupuestada</label>
+              <textarea id="budget-scope" rows="3" maxlength="1000" required class="budget-input" placeholder="Ej.: Patrocinio letrado en la etapa de primera instancia"></textarea>
+            </div>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div><label for="budget-mode" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Modalidad</label><select id="budget-mode" class="budget-input"><option value="pesos">Monto fijo en pesos</option><option value="uma">Monto actualizable en UMA</option></select></div>
+              <div><label for="budget-amount" id="budget-amount-label" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Monto total en pesos</label><input id="budget-amount" type="number" min="0.01" step="0.01" inputmode="decimal" required class="budget-input" placeholder="Ej.: 900000"></div>
+            </div>
+            <div id="budget-uma-wrap" class="hidden"><label for="budget-uma-value" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Valor de 1 UMA en pesos a la fecha</label><input id="budget-uma-value" type="number" min="0.01" step="0.01" inputmode="decimal" class="budget-input" placeholder="Ingresá el valor vigente"><p class="mt-1 text-xs text-slate-500">Se usa solo para informar el equivalente en pesos al emitir el presupuesto; las UMA se actualizan al pagar.</p></div>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <div><label for="budget-installments" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Cantidad de cuotas</label><input id="budget-installments" type="number" min="1" max="36" step="1" value="1" required class="budget-input"></div>
+              <div><label for="budget-first-due" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Primer pago</label><select id="budget-first-due" class="budget-input"><option value="acceptance">Al aceptar el presupuesto</option><option value="date">En una fecha indicada</option></select></div>
+            </div>
+            <div id="budget-date-wrap" class="hidden"><label for="budget-date" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Fecha del primer vencimiento</label><input id="budget-date" type="date" class="budget-input"></div>
+            <div><label for="budget-notes" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Aclaraciones adicionales (opcional)</label><textarea id="budget-notes" rows="3" maxlength="1800" class="budget-input" placeholder="Ej.: El presupuesto comprende únicamente la primera instancia."></textarea></div>
+            <button type="submit" class="flex min-h-12 w-full items-center justify-center rounded-xl bg-[var(--primary-color)] px-5 py-3 text-sm font-extrabold text-white shadow-lg transition hover:bg-[#102d55] active:scale-[.99]">Descargar presupuesto PDF</button>
+            <p class="text-xs leading-relaxed text-slate-500">Los importes y condiciones se reflejarán tal como los ingreses. Revisá el PDF antes de enviarlo al cliente.</p>
+          </form>
+          <div class="space-y-2">
+            <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Vista previa</p>
+            <article class="budget-preview p-5 sm:p-7" aria-live="polite">
+              <div class="flex items-start justify-between gap-3 border-b border-[#c9bfae] pb-5">
+                <img id="budget-pdf-logo" src="presupuesto-logo.jpg" alt="Cárdenas y Asociados" class="h-16 w-20 object-contain sm:h-20 sm:w-24">
+                <div class="text-right"><h3 class="text-lg font-bold leading-tight text-[#0a1f52] sm:text-xl">PRESUPUESTO</h3><p class="text-[10px] font-semibold text-[#0a1f52] sm:text-xs">DE HONORARIOS PROFESIONALES</p><p id="budget-preview-mode" class="mt-2 text-[9px] font-bold uppercase tracking-wide text-[#c99614]">HONORARIOS FIJADOS EN PESOS</p></div>
+              </div>
+              <div class="mt-5 space-y-5 text-xs leading-relaxed sm:text-sm">
+                <div><p class="budget-preview-label">Objeto del presupuesto</p><p id="budget-preview-scope" class="mt-2 break-words">Completá el objeto o etapa presupuestada.</p></div>
+                <div><p class="budget-preview-label">Honorarios</p><p id="budget-preview-amount" class="budget-amount mt-2 break-words text-2xl font-bold text-[#0a1f52]">—</p><p id="budget-preview-detail" class="mt-1 text-[#687287]">Ingresá el monto y la cantidad de cuotas.</p></div>
+                <div><p class="budget-preview-label">Cronograma de pagos</p><div class="mt-2 grid grid-cols-[2.5rem_1fr_1.2fr] gap-2 border-b border-[#0a1f52] pb-1 text-[10px] font-bold text-[#0a1f52]"><span>CUOTA</span><span>IMPORTE</span><span>VENCIMIENTO</span></div><div id="budget-preview-rows" class="divide-y divide-[#e6ded0] text-[10px] sm:text-xs"><p class="py-2 text-[#687287]">Completá los importes para ver las cuotas.</p></div></div>
+                <div><p class="budget-preview-label">Condiciones</p><p id="budget-preview-conditions" class="mt-2 break-words">Los gastos, tasas y honorarios de otros profesionales no están incluidos salvo indicación expresa.</p></div>
+                <div id="budget-preview-notes-wrap" class="hidden"><p class="budget-preview-label">Aclaraciones</p><p id="budget-preview-notes" class="mt-2 break-words"></p></div>
+              </div>
+              <div class="mt-8 flex justify-between gap-2 border-t border-[#c9bfae] pt-3 text-[9px] text-[#687287]"><div><strong class="block text-[#0a1f52]">Dr. Cárdenas Enzo Javier</strong>T° 153 F° 712 C.P.A.C.F.</div><strong class="text-right text-[#0a1f52]">CÁRDENAS &amp; ASOCIADOS</strong></div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -844,12 +916,14 @@
     const isPending = (record) => state.pendingArchives.has(pendingKey(record.type, record.id));
 
     function setView(view) {
-      if (!['home', 'register'].includes(view)) view = 'home';
+      if (!['home', 'register', 'links', 'budgets'].includes(view)) view = 'home';
       state.view = view;
       el("home-view").classList.toggle("hidden", view !== "home");
       el("register-view").classList.toggle("hidden", view !== "register");
+      el("links-view").classList.toggle("hidden", view !== "links");
+      el("budgets-view").classList.toggle("hidden", view !== "budgets");
 
-      ["home", "register"].forEach((name) => {
+      ["home", "register", "links", "budgets"].forEach((name) => {
         const button = el("nav-" + name);
         if (button) {
           const active = name === view;
@@ -869,6 +943,208 @@
       toast.textContent = message;
       el("toast-container").append(toast);
       window.setTimeout(() => toast.remove(), 3500);
+    }
+
+    const PUBLIC_SITE = "https://www.cardenasyasociados.com.ar";
+    const SITE_LINKS = [
+      ["Inicio · Derecho de familia", "/"],
+      ["Servicios de familia", "/servicios/derecho-de-familia/"],
+      ["Sucesiones", "/servicios/sucesiones/"],
+      ["Casos internacionales (inglés)", "/en/"],
+      ["Contratos, desalojos y trámites", "/patrimonial/"],
+      ["Amparos de salud", "/amparos-de-salud/"],
+      ["Laboral · empleadores", "/laboral-empleadores/"],
+      ["Laboral · trabajadores", "/laboral-trabajadores/"],
+      ["Concursos y quiebras", "/concursos-y-quiebras/"],
+      ["Defensa del consumidor", "/defensa-consumidor/"],
+      ["Derecho penal", "/penal/"],
+      ["Ejecuciones fiscales ARCA", "/ejecuciones-fiscales-arca/"]
+    ];
+
+    function renderSiteLinks() {
+      const list = el("site-links-list");
+      list.replaceChildren();
+      SITE_LINKS.forEach(([label, path]) => {
+        const url = PUBLIC_SITE + path;
+        const card = create("div", "card flex min-w-0 items-center gap-2 p-3 sm:p-4");
+        const anchor = create("a", "min-w-0 flex-1 rounded-lg p-2 text-sm font-extrabold text-[var(--primary-color)] transition hover:bg-amber-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600", label);
+        anchor.href = url;
+        anchor.target = "_blank";
+        anchor.rel = "noopener noreferrer";
+        anchor.setAttribute("aria-label", `Abrir ${label}`);
+        const copy = create("button", "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-amber-300 bg-amber-50 text-[var(--primary-color)] transition hover:bg-amber-100 active:scale-95");
+        copy.type = "button";
+        copy.title = `Copiar enlace de ${label}`;
+        copy.setAttribute("aria-label", copy.title);
+        copy.innerHTML = '<svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-2M10 2h8a2 2 0 012 2v10a2 2 0 01-2 2h-8a2 2 0 01-2-2V4a2 2 0 012-2z"/></svg>';
+        copy.addEventListener("click", async () => {
+          try {
+            if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(url);
+            else {
+              const temporary = document.createElement("textarea");
+              temporary.value = url;
+              temporary.style.position = "fixed";
+              temporary.style.opacity = "0";
+              document.body.append(temporary);
+              temporary.select();
+              const copied = document.execCommand("copy");
+              temporary.remove();
+              if (!copied) throw new Error("clipboard unavailable");
+            }
+            showToast("Link copiado.", "success");
+          } catch { showToast("No se pudo copiar. Mantené presionado el enlace para compartirlo.", "error"); }
+        });
+        card.append(anchor, copy);
+        list.append(card);
+      });
+    }
+
+    const budgetPesos = (value) => new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", minimumFractionDigits: Number(value) % 1 ? 2 : 0, maximumFractionDigits: 2 }).format(Number(value) || 0);
+    const budgetUma = (value) => new Intl.NumberFormat("es-AR", { maximumFractionDigits: 3 }).format(Number(value) || 0) + " UMA";
+    const budgetDate = (date) => `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
+    const nextBudgetMonth = (date, months, day) => new Date(date.getFullYear(), date.getMonth() + months, Math.min(day, new Date(date.getFullYear(), date.getMonth() + months + 1, 0).getDate()));
+
+    function updateBudgetVisibility() {
+      const isUma = el("budget-mode").value === "uma";
+      const byDate = el("budget-first-due").value === "date";
+      el("budget-uma-wrap").classList.toggle("hidden", !isUma);
+      el("budget-uma-value").required = isUma;
+      el("budget-amount-label").textContent = isUma ? "Monto total en UMA" : "Monto total en pesos";
+      el("budget-amount").step = isUma ? "0.001" : "0.01";
+      el("budget-amount").placeholder = isUma ? "Ej.: 12" : "Ej.: 900000";
+      el("budget-date-wrap").classList.toggle("hidden", !byDate);
+      el("budget-date").required = byDate;
+      renderBudgetPreview();
+    }
+
+    function readBudgetData() {
+      const mode = el("budget-mode").value;
+      const amount = Number(el("budget-amount").value);
+      const installments = Number(el("budget-installments").value);
+      const umaValue = Number(el("budget-uma-value").value);
+      const byDate = el("budget-first-due").value === "date";
+      const dateValue = el("budget-date").value;
+      const firstDue = byDate && dateValue ? new Date(dateValue + "T12:00:00") : null;
+      if (!el("budget-scope").value.trim()) throw new Error("Indicá el objeto o etapa del presupuesto.");
+      if (!Number.isFinite(amount) || amount <= 0 || amount > 1e12) throw new Error("Ingresá un monto total válido.");
+      if (!Number.isInteger(installments) || installments < 1 || installments > 36) throw new Error("La cantidad de cuotas debe ser de 1 a 36.");
+      if (mode === "uma" && (!Number.isFinite(umaValue) || umaValue <= 0 || umaValue > 1e9)) throw new Error("Ingresá el valor vigente de la UMA.");
+      if (byDate && (!firstDue || Number.isNaN(firstDue.getTime()))) throw new Error("Elegí la fecha del primer vencimiento.");
+      const units = Math.round(amount * (mode === "uma" ? 1000 : 100));
+      if (!units) throw new Error("El monto es demasiado pequeño.");
+      if (units < installments) throw new Error("El monto no alcanza para dividirlo en esa cantidad de cuotas.");
+      const base = Math.floor(units / installments);
+      const remainder = units - base * installments;
+      const divisor = mode === "uma" ? 1000 : 100;
+      const rows = Array.from({ length: installments }, (_, index) => {
+        const installmentAmount = (base + (index === installments - 1 ? remainder : 0)) / divisor;
+        const due = byDate ? budgetDate(nextBudgetMonth(firstDue, index, firstDue.getDate())) : index === 0 ? "Al aceptar el presupuesto" : budgetDate(nextBudgetMonth(new Date(), index, 10));
+        return { number: index + 1, amount: installmentAmount, due };
+      });
+      return {
+        mode, amount, installments, umaValue, rows,
+        scope: el("budget-scope").value.trim(),
+        notes: el("budget-notes").value.trim(),
+        byDate, firstDue
+      };
+    }
+
+    function renderBudgetPreview() {
+      const mode = el("budget-mode").value;
+      const amount = Number(el("budget-amount").value);
+      const installments = Number(el("budget-installments").value) || 1;
+      const notes = el("budget-notes").value.trim();
+      el("budget-preview-mode").textContent = mode === "uma" ? "HONORARIOS EN UMA ACTUALIZABLES" : "HONORARIOS FIJADOS EN PESOS";
+      el("budget-preview-scope").textContent = el("budget-scope").value.trim() || "Completá el objeto o etapa presupuestada.";
+      el("budget-preview-amount").textContent = amount > 0 ? mode === "uma" ? budgetUma(amount) : budgetPesos(amount) : "—";
+      const equivalent = mode === "uma" && amount > 0 && Number(el("budget-uma-value").value) > 0 ? ` Equivalente hoy: ${budgetPesos(amount * Number(el("budget-uma-value").value))}.` : "";
+      el("budget-preview-detail").textContent = amount > 0 ? `${installments === 1 ? "Pago único" : `${installments} cuotas mensuales`}.${equivalent}` : "Ingresá el monto y la cantidad de cuotas.";
+      el("budget-preview-conditions").textContent = `${mode === "uma" ? "Cada pago se convierte a pesos al valor vigente de la UMA al momento de abonarlo. " : "El importe queda fijado en pesos y no se actualiza por variaciones de la UMA. "}Los gastos, tasas, honorarios de otros profesionales, incidentes, recursos y actuaciones extraordinarias no están incluidos salvo indicación expresa.`;
+      el("budget-preview-notes-wrap").classList.toggle("hidden", !notes);
+      el("budget-preview-notes").textContent = notes;
+      const rows = el("budget-preview-rows");
+      rows.replaceChildren();
+      try {
+        readBudgetData().rows.forEach((row) => {
+          const item = create("div", "grid grid-cols-[2.5rem_1fr_1.2fr] gap-2 py-2");
+          item.append(create("span", "", String(row.number)), create("span", "", mode === "uma" ? budgetUma(row.amount) : budgetPesos(row.amount)), create("span", "", row.due));
+          rows.append(item);
+        });
+      } catch { rows.append(create("p", "py-2 text-[#687287]", "Completá los importes para ver las cuotas.")); }
+    }
+
+    function createBudgetPdf(data) {
+      if (!window.jspdf?.jsPDF) throw new Error("La herramienta PDF no terminó de cargar. Reintentá en unos segundos.");
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({ unit: "mm", format: "a4", compress: true });
+      const pageWidth = 210, pageHeight = 297, left = 20, right = 190, bottom = 266;
+      const navy = [10, 31, 82], gold = [201, 150, 20], ink = [34, 41, 58], muted = [104, 114, 135];
+      const issued = new Date();
+      let y = 59;
+      const header = () => {
+        pdf.setFillColor(251, 247, 239); pdf.rect(0, 0, pageWidth, pageHeight, "F");
+        pdf.setFillColor(...navy); pdf.rect(0, 0, pageWidth, 1.8, "F");
+        pdf.setFillColor(...gold); pdf.rect(0, 1.8, pageWidth, 1, "F");
+        const logo = el("budget-pdf-logo");
+        if (logo.complete && logo.naturalWidth) pdf.addImage(logo, "JPEG", left, 6, 34, 34);
+        pdf.setTextColor(...navy); pdf.setFont("times", "bold"); pdf.setFontSize(20); pdf.text("PRESUPUESTO", right, 18, { align: "right" });
+        pdf.setFont("times", "normal"); pdf.setFontSize(11); pdf.text("DE HONORARIOS PROFESIONALES", right, 25, { align: "right" });
+        pdf.setTextColor(...gold); pdf.setFont("helvetica", "bold"); pdf.setFontSize(7.5);
+        pdf.text(data.mode === "uma" ? "HONORARIOS EN UMA ACTUALIZABLES" : "HONORARIOS FIJADOS EN PESOS", right, 33, { align: "right" });
+        pdf.setDrawColor(201, 191, 174); pdf.setLineWidth(.25); pdf.line(left, 46, right, 46);
+      };
+      const footer = (page, total) => {
+        pdf.setDrawColor(201, 191, 174); pdf.line(left, 278, right, 278);
+        pdf.setTextColor(...navy); pdf.setFont("helvetica", "bold"); pdf.setFontSize(8); pdf.text("Dr. Cárdenas Enzo Javier", left, 284);
+        pdf.setTextColor(...muted); pdf.setFont("helvetica", "normal"); pdf.setFontSize(7.3); pdf.text("T° 153 F° 712 C.P.A.C.F.", left, 290);
+        pdf.text("CÁRDENAS & ASOCIADOS", right, 284, { align: "right" });
+        pdf.text(`Página ${page} de ${total}`, right, 290, { align: "right" });
+      };
+      const newPage = () => { pdf.addPage(); header(); y = 59; };
+      const ensure = (height) => { if (y + height > bottom) newPage(); };
+      const heading = (value) => { ensure(15); pdf.setFont("helvetica", "bold"); pdf.setFontSize(9.5); pdf.setTextColor(...navy); pdf.text(value.toUpperCase(), left, y); pdf.setDrawColor(...gold); pdf.setLineWidth(.3); pdf.line(left, y + 2.5, left + 32, y + 2.5); y += 11; };
+      const paragraph = (value, size = 9.2) => {
+        pdf.setFont("helvetica", "normal"); pdf.setFontSize(size); pdf.setTextColor(...ink);
+        const lines = pdf.splitTextToSize(value, right - left);
+        for (const line of lines) { ensure(5); pdf.text(line, left, y); y += 5; }
+        y += 5;
+      };
+      header();
+      pdf.setFont("helvetica", "normal"); pdf.setFontSize(8); pdf.setTextColor(...muted);
+      pdf.text(`Emitido el ${budgetDate(issued)}`, left, y); y += 11;
+      heading("Objeto del presupuesto");
+      paragraph(data.scope);
+      heading("Honorarios");
+      ensure(data.mode === "uma" ? 42 : 29);
+      pdf.setFont("times", "bold"); pdf.setFontSize(22); pdf.setTextColor(...navy);
+      pdf.text(data.mode === "uma" ? budgetUma(data.amount) : budgetPesos(data.amount), left, y); y += 11;
+      if (data.mode === "uma") {
+        pdf.setFont("helvetica", "bold"); pdf.setFontSize(8); pdf.setTextColor(...gold); pdf.text("EQUIVALENTE EN PESOS A LA FECHA", left, y); y += 7;
+        pdf.setFont("times", "bold"); pdf.setFontSize(19); pdf.setTextColor(...navy); pdf.text(budgetPesos(data.amount * data.umaValue), left, y); y += 9;
+        paragraph(`La conversión en pesos es referencial, calculada con 1 UMA = ${budgetPesos(data.umaValue)} al ${budgetDate(issued)}. Cada pago se convierte al valor de la UMA vigente al momento de abonarlo.`);
+      } else paragraph(`El monto queda fijado en pesos${data.installments > 1 ? ` y se abona en ${data.installments} cuotas mensuales` : " y se abona en un pago"}. No se actualiza por variaciones posteriores del valor de la UMA.`);
+      heading("Cronograma de pagos");
+      const tableHeader = () => { ensure(13); pdf.setFont("helvetica", "bold"); pdf.setFontSize(8); pdf.setTextColor(...navy); pdf.text("CUOTA", left, y); pdf.text("IMPORTE", left + 46, y); pdf.text("VENCIMIENTO", left + 101, y); y += 2.5; pdf.setDrawColor(...navy); pdf.line(left, y, right, y); y += 6; };
+      tableHeader();
+      data.rows.forEach((row) => {
+        if (y + 8 > bottom) { newPage(); heading("Cronograma de pagos (continuación)"); tableHeader(); }
+        pdf.setFont("helvetica", "normal"); pdf.setFontSize(8.4); pdf.setTextColor(...ink);
+        pdf.text(String(row.number), left, y);
+        pdf.text(data.mode === "uma" ? budgetUma(row.amount) : budgetPesos(row.amount), left + 46, y);
+        pdf.text(row.due, left + 101, y);
+        y += 8;
+      });
+      y += 5;
+      heading("Condiciones");
+      paragraph(data.byDate ? `La primera cuota vence el ${budgetDate(data.firstDue)} y las siguientes, el mismo día de cada mes.` : data.installments === 1 ? "El pago se realiza al aceptar el presupuesto." : "La primera cuota se abona al aceptar el presupuesto. Las siguientes vencen el día 10 de cada mes, a partir del mes siguiente.");
+      paragraph("Los gastos, tasas, honorarios de otros profesionales, incidentes, recursos y actuaciones extraordinarias no se encuentran incluidos salvo indicación expresa.");
+      if (data.notes) { heading("Aclaraciones"); paragraph(data.notes); }
+      const totalPages = pdf.getNumberOfPages();
+      for (let page = 1; page <= totalPages; page += 1) { pdf.setPage(page); footer(page, totalPages); }
+      pdf.setProperties({ title: "Presupuesto de honorarios profesionales", author: "Cárdenas y Asociados", subject: "Presupuesto de honorarios" });
+      const filenameDate = `${issued.getFullYear()}-${String(issued.getMonth() + 1).padStart(2, "0")}-${String(issued.getDate()).padStart(2, "0")}`;
+      const filenameTime = `${String(issued.getHours()).padStart(2, "0")}-${String(issued.getMinutes()).padStart(2, "0")}`;
+      pdf.save(`Presupuesto_${filenameDate}_${filenameTime}.pdf`);
     }
 
     function showConfirmModal(message, onConfirm) {
@@ -2158,6 +2434,17 @@
 
     el("export-records-pdf").addEventListener("click", exportRecordsPdf);
     el("export-records-excel").addEventListener("click", exportRecordsExcel);
+
+    renderSiteLinks();
+    el("budget-form").addEventListener("input", renderBudgetPreview);
+    el("budget-mode").addEventListener("change", updateBudgetVisibility);
+    el("budget-first-due").addEventListener("change", updateBudgetVisibility);
+    el("budget-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      try { createBudgetPdf(readBudgetData()); showToast("Presupuesto PDF descargado.", "success"); }
+      catch (error) { showToast(error.message || "No se pudo crear el presupuesto.", "error"); }
+    });
+    updateBudgetVisibility();
 
     el("entry-duration").addEventListener("change", updateDurationVisibility);
     el("entry-form").addEventListener("submit", saveEntry);
