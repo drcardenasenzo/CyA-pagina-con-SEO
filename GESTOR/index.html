@@ -462,14 +462,18 @@
             </div>
             <div class="grid gap-4 sm:grid-cols-2">
               <div><label for="budget-mode" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Modalidad</label><select id="budget-mode" class="budget-input"><option value="pesos">Monto fijo en pesos</option><option value="uma">Monto actualizable en UMA</option></select></div>
-              <div><label for="budget-amount" id="budget-amount-label" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Monto total en pesos</label><input id="budget-amount" type="number" min="0.01" step="0.01" inputmode="decimal" required class="budget-input" placeholder="Ej.: 900000"></div>
+              <div><label for="budget-amount" id="budget-amount-label" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Importe de cada cuota en pesos</label><input id="budget-amount" type="number" min="0.01" step="0.01" inputmode="decimal" required class="budget-input" placeholder="Ej.: 120000"></div>
             </div>
             <div id="budget-uma-wrap" class="hidden"><label for="budget-uma-value" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Valor de 1 UMA en pesos a la fecha</label><input id="budget-uma-value" type="number" min="0.01" step="0.01" inputmode="decimal" class="budget-input" placeholder="Ingresá el valor vigente"><p class="mt-1 text-xs text-slate-500">Se usa solo para informar el equivalente en pesos al emitir el presupuesto; las UMA se actualizan al pagar.</p></div>
             <div class="grid gap-4 sm:grid-cols-2">
               <div><label for="budget-installments" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Cantidad de cuotas</label><input id="budget-installments" type="number" min="1" max="36" step="1" value="1" required class="budget-input"></div>
-              <div><label for="budget-first-due" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Primer pago</label><select id="budget-first-due" class="budget-input"><option value="acceptance">Al aceptar el presupuesto</option><option value="date">En una fecha indicada</option></select></div>
+              <div><label for="budget-first-due" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Primera cuota de honorarios</label><select id="budget-first-due" class="budget-input"><option value="acceptance">Al aceptar el presupuesto</option><option value="nextmonth">Mes siguiente, día 10</option><option value="date">En una fecha indicada</option></select></div>
             </div>
             <div id="budget-date-wrap" class="hidden"><label for="budget-date" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Fecha del primer vencimiento</label><input id="budget-date" type="date" class="budget-input"></div>
+            <div class="border-t border-slate-200 pt-5">
+              <div class="flex items-center justify-between gap-3"><div><h3 class="text-sm font-black text-[var(--primary-color)]">Costos</h3><p class="mt-1 text-xs text-slate-500">Se detallan aparte de los honorarios. Agregá uno o varios si corresponde.</p></div><button id="budget-add-cost" type="button" class="shrink-0 rounded-xl border border-[var(--secondary-color)] bg-amber-50 px-3 py-2 text-xs font-extrabold text-[var(--primary-color)] transition hover:bg-amber-100">+ Agregar</button></div>
+              <div id="budget-cost-list" class="mt-4 space-y-3"></div>
+            </div>
             <div><label for="budget-notes" class="mb-1.5 block text-xs font-bold uppercase tracking-wider text-slate-600">Aclaraciones adicionales (opcional)</label><textarea id="budget-notes" rows="3" maxlength="1800" class="budget-input" placeholder="Ej.: El presupuesto comprende únicamente la primera instancia."></textarea></div>
             <button type="submit" class="flex min-h-12 w-full items-center justify-center rounded-xl bg-[var(--primary-color)] px-5 py-3 text-sm font-extrabold text-white shadow-lg transition hover:bg-[#102d55] active:scale-[.99]">Descargar presupuesto PDF</button>
             <p class="text-xs leading-relaxed text-slate-500">Los importes y condiciones se reflejarán tal como los ingreses. Revisá el PDF antes de enviarlo al cliente.</p>
@@ -483,8 +487,9 @@
               </div>
               <div class="mt-5 space-y-5 text-xs leading-relaxed sm:text-sm">
                 <div><p class="budget-preview-label">Objeto del presupuesto</p><p id="budget-preview-scope" class="mt-2 break-words">Completá el objeto o etapa presupuestada.</p></div>
-                <div><p class="budget-preview-label">Honorarios</p><p id="budget-preview-amount" class="budget-amount mt-2 break-words text-2xl font-bold text-[#0a1f52]">—</p><p id="budget-preview-detail" class="mt-1 text-[#687287]">Ingresá el monto y la cantidad de cuotas.</p></div>
+                <div><p class="budget-preview-label">Honorarios</p><p id="budget-preview-amount" class="budget-amount mt-2 break-words text-2xl font-bold text-[#0a1f52]">—</p><p id="budget-preview-detail" class="mt-1 text-[#687287]">Ingresá el importe de cada cuota y la cantidad.</p></div>
                 <div><p class="budget-preview-label">Cronograma de pagos</p><div class="mt-2 grid grid-cols-[2.5rem_1fr_1.2fr] gap-2 border-b border-[#0a1f52] pb-1 text-[10px] font-bold text-[#0a1f52]"><span>CUOTA</span><span>IMPORTE</span><span>VENCIMIENTO</span></div><div id="budget-preview-rows" class="divide-y divide-[#e6ded0] text-[10px] sm:text-xs"><p class="py-2 text-[#687287]">Completá los importes para ver las cuotas.</p></div></div>
+                <div id="budget-preview-costs-wrap" class="hidden"><p class="budget-preview-label">Costos</p><div id="budget-preview-costs" class="mt-2 divide-y divide-[#e6ded0] text-[10px] sm:text-xs"></div><p id="budget-preview-cost-total" class="mt-2 font-bold text-[#0a1f52]"></p><p id="budget-preview-grand-total" class="mt-1 font-bold text-[#0a1f52]"></p></div>
                 <div><p class="budget-preview-label">Condiciones</p><p id="budget-preview-conditions" class="mt-2 break-words">Los gastos, tasas y honorarios de otros profesionales no están incluidos salvo indicación expresa.</p></div>
                 <div id="budget-preview-notes-wrap" class="hidden"><p class="budget-preview-label">Aclaraciones</p><p id="budget-preview-notes" class="mt-2 break-words"></p></div>
               </div>
@@ -1003,15 +1008,39 @@
     const budgetUma = (value) => new Intl.NumberFormat("es-AR", { maximumFractionDigits: 3 }).format(Number(value) || 0) + " UMA";
     const budgetDate = (date) => `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
     const nextBudgetMonth = (date, months, day) => new Date(date.getFullYear(), date.getMonth() + months, Math.min(day, new Date(date.getFullYear(), date.getMonth() + months + 1, 0).getDate()));
+    let budgetCostIndex = 0;
+
+    function addBudgetCost() {
+      const list = el("budget-cost-list");
+      if (list.children.length >= 12) { showToast("Podés agregar hasta 12 costos.", "error"); return; }
+      budgetCostIndex += 1;
+      const id = budgetCostIndex;
+      const row = create("div", "budget-cost-row rounded-xl border border-amber-200 bg-amber-50/40 p-3 space-y-3");
+      row.innerHTML = `
+        <div class="flex items-center justify-between"><span class="text-xs font-extrabold uppercase tracking-wide text-[var(--primary-color)]">Costo</span><button type="button" class="budget-cost-remove rounded-lg px-2 py-1 text-xs font-bold text-red-700 hover:bg-red-50" aria-label="Quitar costo">Quitar</button></div>
+        <div class="grid gap-3 sm:grid-cols-[1.5fr_1fr]"><div><label for="budget-cost-concept-${id}" class="mb-1 block text-xs font-bold text-slate-600">Concepto</label><input id="budget-cost-concept-${id}" class="budget-cost-concept budget-input" type="text" maxlength="140" required placeholder="Ej.: Tasa de justicia"></div><div><label for="budget-cost-amount-${id}" class="mb-1 block text-xs font-bold text-slate-600">Importe en pesos</label><input id="budget-cost-amount-${id}" class="budget-cost-amount budget-input" type="number" min="0.01" step="0.01" inputmode="decimal" required placeholder="Ej.: 50000"></div></div>
+        <div><label for="budget-cost-when-${id}" class="mb-1 block text-xs font-bold text-slate-600">Cuándo se paga</label><select id="budget-cost-when-${id}" class="budget-cost-when budget-input"><option value="acceptance">Al aceptar el presupuesto</option><option value="firstinstallment">Con la primera cuota de honorarios</option><option value="date">En una fecha indicada</option></select></div>
+        <div class="budget-cost-date-wrap hidden"><label for="budget-cost-date-${id}" class="mb-1 block text-xs font-bold text-slate-600">Fecha de pago</label><input id="budget-cost-date-${id}" class="budget-cost-date budget-input" type="date"></div>`;
+      row.querySelector(".budget-cost-remove").addEventListener("click", () => { row.remove(); renderBudgetPreview(); });
+      row.querySelector(".budget-cost-when").addEventListener("change", () => {
+        const byDate = row.querySelector(".budget-cost-when").value === "date";
+        row.querySelector(".budget-cost-date-wrap").classList.toggle("hidden", !byDate);
+        row.querySelector(".budget-cost-date").required = byDate;
+        renderBudgetPreview();
+      });
+      list.append(row);
+      renderBudgetPreview();
+      row.querySelector(".budget-cost-concept").focus();
+    }
 
     function updateBudgetVisibility() {
       const isUma = el("budget-mode").value === "uma";
       const byDate = el("budget-first-due").value === "date";
       el("budget-uma-wrap").classList.toggle("hidden", !isUma);
       el("budget-uma-value").required = isUma;
-      el("budget-amount-label").textContent = isUma ? "Monto total en UMA" : "Monto total en pesos";
+      el("budget-amount-label").textContent = isUma ? "Importe de cada cuota en UMA" : "Importe de cada cuota en pesos";
       el("budget-amount").step = isUma ? "0.001" : "0.01";
-      el("budget-amount").placeholder = isUma ? "Ej.: 12" : "Ej.: 900000";
+      el("budget-amount").placeholder = isUma ? "Ej.: 2" : "Ej.: 120000";
       el("budget-date-wrap").classList.toggle("hidden", !byDate);
       el("budget-date").required = byDate;
       renderBudgetPreview();
@@ -1019,30 +1048,46 @@
 
     function readBudgetData() {
       const mode = el("budget-mode").value;
-      const amount = Number(el("budget-amount").value);
+      const installmentAmount = Number(el("budget-amount").value);
       const installments = Number(el("budget-installments").value);
       const umaValue = Number(el("budget-uma-value").value);
-      const byDate = el("budget-first-due").value === "date";
+      const firstDueRule = el("budget-first-due").value;
+      const byDate = firstDueRule === "date";
       const dateValue = el("budget-date").value;
       const firstDue = byDate && dateValue ? new Date(dateValue + "T12:00:00") : null;
       if (!el("budget-scope").value.trim()) throw new Error("Indicá el objeto o etapa del presupuesto.");
-      if (!Number.isFinite(amount) || amount <= 0 || amount > 1e12) throw new Error("Ingresá un monto total válido.");
+      if (!Number.isFinite(installmentAmount) || installmentAmount <= 0 || installmentAmount > 1e12) throw new Error("Ingresá un importe válido para cada cuota.");
       if (!Number.isInteger(installments) || installments < 1 || installments > 36) throw new Error("La cantidad de cuotas debe ser de 1 a 36.");
       if (mode === "uma" && (!Number.isFinite(umaValue) || umaValue <= 0 || umaValue > 1e9)) throw new Error("Ingresá el valor vigente de la UMA.");
       if (byDate && (!firstDue || Number.isNaN(firstDue.getTime()))) throw new Error("Elegí la fecha del primer vencimiento.");
-      const units = Math.round(amount * (mode === "uma" ? 1000 : 100));
-      if (!units) throw new Error("El monto es demasiado pequeño.");
-      if (units < installments) throw new Error("El monto no alcanza para dividirlo en esa cantidad de cuotas.");
-      const base = Math.floor(units / installments);
-      const remainder = units - base * installments;
       const divisor = mode === "uma" ? 1000 : 100;
+      const units = Math.round(installmentAmount * divisor);
+      if (!units) throw new Error("El monto es demasiado pequeño.");
+      if (!Number.isSafeInteger(units * installments)) throw new Error("El monto total supera el límite admitido.");
+      const amount = units * installments / divisor;
+      const exactInstallment = units / divisor;
+      const today = new Date();
       const rows = Array.from({ length: installments }, (_, index) => {
-        const installmentAmount = (base + (index === installments - 1 ? remainder : 0)) / divisor;
-        const due = byDate ? budgetDate(nextBudgetMonth(firstDue, index, firstDue.getDate())) : index === 0 ? "Al aceptar el presupuesto" : budgetDate(nextBudgetMonth(new Date(), index, 10));
-        return { number: index + 1, amount: installmentAmount, due };
+        const due = byDate ? budgetDate(nextBudgetMonth(firstDue, index, firstDue.getDate())) : firstDueRule === "nextmonth" ? budgetDate(nextBudgetMonth(today, index + 1, 10)) : index === 0 ? "Al aceptar el presupuesto" : budgetDate(nextBudgetMonth(today, index, 10));
+        return { number: index + 1, amount: exactInstallment, due };
+      });
+      let costCents = 0;
+      const costs = Array.from(document.querySelectorAll("#budget-cost-list .budget-cost-row"), (row) => {
+        const concept = row.querySelector(".budget-cost-concept").value.trim();
+        const costAmount = Number(row.querySelector(".budget-cost-amount").value);
+        const when = row.querySelector(".budget-cost-when").value;
+        const costDateValue = row.querySelector(".budget-cost-date").value;
+        if (!concept) throw new Error("Completá el concepto de cada costo.");
+        if (!Number.isFinite(costAmount) || costAmount <= 0 || costAmount > 1e12) throw new Error("Completá un importe válido para cada costo.");
+        if (when === "date" && !costDateValue) throw new Error("Elegí la fecha de pago del costo.");
+        const cents = Math.round(costAmount * 100);
+        costCents += cents;
+        if (!Number.isSafeInteger(costCents)) throw new Error("El total de costos supera el límite admitido.");
+        const due = when === "acceptance" ? "Al aceptar el presupuesto" : when === "firstinstallment" ? `Con la primera cuota (${rows[0].due})` : budgetDate(new Date(costDateValue + "T12:00:00"));
+        return { concept, amount: cents / 100, due };
       });
       return {
-        mode, amount, installments, umaValue, rows,
+        mode, amount, installmentAmount: exactInstallment, installments, umaValue, rows, costs, costTotal: costCents / 100, firstDueRule,
         scope: el("budget-scope").value.trim(),
         notes: el("budget-notes").value.trim(),
         byDate, firstDue
@@ -1051,26 +1096,44 @@
 
     function renderBudgetPreview() {
       const mode = el("budget-mode").value;
-      const amount = Number(el("budget-amount").value);
+      const installmentAmount = Number(el("budget-amount").value);
       const installments = Number(el("budget-installments").value) || 1;
+      const amount = installmentAmount * installments;
       const notes = el("budget-notes").value.trim();
       el("budget-preview-mode").textContent = mode === "uma" ? "HONORARIOS EN UMA ACTUALIZABLES" : "HONORARIOS FIJADOS EN PESOS";
       el("budget-preview-scope").textContent = el("budget-scope").value.trim() || "Completá el objeto o etapa presupuestada.";
       el("budget-preview-amount").textContent = amount > 0 ? mode === "uma" ? budgetUma(amount) : budgetPesos(amount) : "—";
       const equivalent = mode === "uma" && amount > 0 && Number(el("budget-uma-value").value) > 0 ? ` Equivalente hoy: ${budgetPesos(amount * Number(el("budget-uma-value").value))}.` : "";
-      el("budget-preview-detail").textContent = amount > 0 ? `${installments === 1 ? "Pago único" : `${installments} cuotas mensuales`}.${equivalent}` : "Ingresá el monto y la cantidad de cuotas.";
-      el("budget-preview-conditions").textContent = `${mode === "uma" ? "Cada pago se convierte a pesos al valor vigente de la UMA al momento de abonarlo. " : "El importe queda fijado en pesos y no se actualiza por variaciones de la UMA. "}Los gastos, tasas, honorarios de otros profesionales, incidentes, recursos y actuaciones extraordinarias no están incluidos salvo indicación expresa.`;
+      el("budget-preview-detail").textContent = amount > 0 ? `${installments === 1 ? "Pago único" : `${installments} cuotas de ${mode === "uma" ? budgetUma(installmentAmount) : budgetPesos(installmentAmount)}`}.${equivalent}` : "Ingresá el importe de cada cuota y la cantidad.";
+      const hasCosts = el("budget-cost-list").children.length > 0;
+      el("budget-preview-conditions").textContent = `${mode === "uma" ? "Cada pago se convierte a pesos al valor vigente de la UMA al momento de abonarlo. " : "El importe queda fijado en pesos y no se actualiza por variaciones de la UMA. "}${hasCosts ? "Los costos indicados se abonan por separado en los momentos consignados. Los demás gastos" : "Los gastos"}, tasas, honorarios de otros profesionales, incidentes, recursos y actuaciones extraordinarias no están incluidos salvo indicación expresa.`;
       el("budget-preview-notes-wrap").classList.toggle("hidden", !notes);
       el("budget-preview-notes").textContent = notes;
       const rows = el("budget-preview-rows");
       rows.replaceChildren();
+      const costRows = el("budget-preview-costs");
+      costRows.replaceChildren();
+      el("budget-preview-costs-wrap").classList.toggle("hidden", !hasCosts);
       try {
-        readBudgetData().rows.forEach((row) => {
+        const data = readBudgetData();
+        data.rows.forEach((row) => {
           const item = create("div", "grid grid-cols-[2.5rem_1fr_1.2fr] gap-2 py-2");
           item.append(create("span", "", String(row.number)), create("span", "", mode === "uma" ? budgetUma(row.amount) : budgetPesos(row.amount)), create("span", "", row.due));
           rows.append(item);
         });
-      } catch { rows.append(create("p", "py-2 text-[#687287]", "Completá los importes para ver las cuotas.")); }
+        data.costs.forEach((cost) => {
+          const item = create("div", "py-2");
+          item.append(create("strong", "block break-words text-[#0a1f52]", `${cost.concept}: ${budgetPesos(cost.amount)}`), create("span", "block break-words text-[#687287]", cost.due));
+          costRows.append(item);
+        });
+        el("budget-preview-cost-total").textContent = hasCosts ? `Total de costos: ${budgetPesos(data.costTotal)}` : "";
+        el("budget-preview-grand-total").textContent = hasCosts ? `${mode === "uma" ? "Total estimado hoy" : "Total honorarios y costos"}: ${budgetPesos((mode === "uma" ? data.amount * data.umaValue : data.amount) + data.costTotal)}` : "";
+      } catch {
+        rows.append(create("p", "py-2 text-[#687287]", "Completá los importes para ver las cuotas."));
+        if (hasCosts) costRows.append(create("p", "py-2 text-[#687287]", "Completá el concepto y el importe de cada costo."));
+        el("budget-preview-cost-total").textContent = "";
+        el("budget-preview-grand-total").textContent = "";
+      }
     }
 
     function createBudgetPdf(data) {
@@ -1121,8 +1184,8 @@
       if (data.mode === "uma") {
         pdf.setFont("helvetica", "bold"); pdf.setFontSize(8); pdf.setTextColor(...gold); pdf.text("EQUIVALENTE EN PESOS A LA FECHA", left, y); y += 7;
         pdf.setFont("times", "bold"); pdf.setFontSize(19); pdf.setTextColor(...navy); pdf.text(budgetPesos(data.amount * data.umaValue), left, y); y += 9;
-        paragraph(`La conversión en pesos es referencial, calculada con 1 UMA = ${budgetPesos(data.umaValue)} al ${budgetDate(issued)}. Cada pago se convierte al valor de la UMA vigente al momento de abonarlo.`);
-      } else paragraph(`El monto queda fijado en pesos${data.installments > 1 ? ` y se abona en ${data.installments} cuotas mensuales` : " y se abona en un pago"}. No se actualiza por variaciones posteriores del valor de la UMA.`);
+        paragraph(`El total resulta de ${data.installments} ${data.installments === 1 ? "pago" : "cuotas"} de ${budgetUma(data.installmentAmount)}. La conversión en pesos es referencial, calculada con 1 UMA = ${budgetPesos(data.umaValue)} al ${budgetDate(issued)}. Cada pago se convierte al valor de la UMA vigente al momento de abonarlo.`);
+      } else paragraph(`El total resulta de ${data.installments} ${data.installments === 1 ? "pago" : "cuotas mensuales"} de ${budgetPesos(data.installmentAmount)}. El importe queda fijado en pesos y no se actualiza por variaciones posteriores del valor de la UMA.`);
       heading("Cronograma de pagos");
       const tableHeader = () => { ensure(13); pdf.setFont("helvetica", "bold"); pdf.setFontSize(8); pdf.setTextColor(...navy); pdf.text("CUOTA", left, y); pdf.text("IMPORTE", left + 46, y); pdf.text("VENCIMIENTO", left + 101, y); y += 2.5; pdf.setDrawColor(...navy); pdf.line(left, y, right, y); y += 6; };
       tableHeader();
@@ -1135,9 +1198,35 @@
         y += 8;
       });
       y += 5;
+      if (data.costs.length) {
+        ensure(35);
+        heading("Costos presupuestados");
+        paragraph("Estos conceptos se abonan por separado de los honorarios, en el momento indicado para cada uno.");
+        const costHeader = () => {
+          ensure(13);
+          pdf.setFont("helvetica", "bold"); pdf.setFontSize(8); pdf.setTextColor(...navy);
+          pdf.text("CONCEPTO", left, y); pdf.text("IMPORTE", left + 76, y); pdf.text("PAGO", left + 115, y);
+          y += 2.5; pdf.setDrawColor(...navy); pdf.line(left, y, right, y); y += 6;
+        };
+        costHeader();
+        data.costs.forEach((cost) => {
+          pdf.setFont("helvetica", "normal"); pdf.setFontSize(8.2); pdf.setTextColor(...ink);
+          const conceptLines = pdf.splitTextToSize(cost.concept, 69);
+          const dueLines = pdf.splitTextToSize(cost.due, 54);
+          const height = Math.max(conceptLines.length, dueLines.length) * 4.6 + 4;
+          if (y + height > bottom) { newPage(); heading("Costos (continuación)"); costHeader(); }
+          pdf.text(conceptLines, left, y);
+          pdf.text(budgetPesos(cost.amount), left + 76, y);
+          pdf.text(dueLines, left + 115, y);
+          y += height;
+        });
+        y += 3;
+        paragraph(`Total de costos: ${budgetPesos(data.costTotal)}.`);
+        paragraph(`${data.mode === "uma" ? "Total estimado de honorarios y costos a la fecha" : "Total de honorarios y costos"}: ${budgetPesos((data.mode === "uma" ? data.amount * data.umaValue : data.amount) + data.costTotal)}.${data.mode === "uma" ? " La parte de honorarios en UMA puede variar al momento de cada pago." : ""}`);
+      }
       heading("Condiciones");
-      paragraph(data.byDate ? `La primera cuota vence el ${budgetDate(data.firstDue)} y las siguientes, el mismo día de cada mes.` : data.installments === 1 ? "El pago se realiza al aceptar el presupuesto." : "La primera cuota se abona al aceptar el presupuesto. Las siguientes vencen el día 10 de cada mes, a partir del mes siguiente.");
-      paragraph("Los gastos, tasas, honorarios de otros profesionales, incidentes, recursos y actuaciones extraordinarias no se encuentran incluidos salvo indicación expresa.");
+      paragraph(data.byDate ? `La primera cuota de honorarios vence el ${budgetDate(data.firstDue)} y las siguientes, el mismo día de cada mes.` : data.firstDueRule === "nextmonth" ? `La primera cuota de honorarios vence el ${data.rows[0].due} y las siguientes, el día 10 de cada mes.` : data.installments === 1 ? "Los honorarios se abonan al aceptar el presupuesto." : "La primera cuota de honorarios se abona al aceptar el presupuesto. Las siguientes vencen el día 10 de cada mes, a partir del mes siguiente.");
+      paragraph(data.costs.length ? "Los costos detallados se abonan según su cronograma. Los demás gastos, tasas, honorarios de otros profesionales, incidentes, recursos y actuaciones extraordinarias no se encuentran incluidos salvo indicación expresa." : "Los gastos, tasas, honorarios de otros profesionales, incidentes, recursos y actuaciones extraordinarias no se encuentran incluidos salvo indicación expresa.");
       if (data.notes) { heading("Aclaraciones"); paragraph(data.notes); }
       const totalPages = pdf.getNumberOfPages();
       for (let page = 1; page <= totalPages; page += 1) { pdf.setPage(page); footer(page, totalPages); }
@@ -2437,7 +2526,11 @@
 
     renderSiteLinks();
     el("budget-form").addEventListener("input", renderBudgetPreview);
-    el("budget-mode").addEventListener("change", updateBudgetVisibility);
+    el("budget-add-cost").addEventListener("click", addBudgetCost);
+    el("budget-mode").addEventListener("change", () => {
+      el("budget-amount").value = "";
+      updateBudgetVisibility();
+    });
     el("budget-first-due").addEventListener("change", updateBudgetVisibility);
     el("budget-form").addEventListener("submit", (event) => {
       event.preventDefault();
