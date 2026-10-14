@@ -166,6 +166,14 @@
     .budget-preview h3, .budget-preview .budget-amount { font-family: Georgia, 'Times New Roman', serif; }
     .budget-preview-label { color: #0a1f52; font-size: .68rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
     .budget-preview-label::after { content: ''; display: block; width: 3rem; height: 1px; margin-top: .3rem; background: #c99614; }
+    .budget-preview-payments-head, .budget-preview-payment-row { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr) auto; gap: .5rem; align-items: baseline; }
+    .budget-preview-payments-head span:last-child, .budget-preview-payment-row span:last-child { text-align: right; white-space: nowrap; }
+    @media (max-width: 420px) {
+      .budget-preview-head { flex-direction: column; align-items: center; gap: .65rem; text-align: center; }
+      .budget-preview-head img { width: 6rem; height: 4.5rem; }
+      .budget-preview-head > div { width: 100%; text-align: center; }
+      .budget-preview-payments-head, .budget-preview-payment-row { grid-template-columns: 1.8rem minmax(0, 1fr) auto; gap: .35rem; font-size: .69rem; }
+    }
     @media (max-width: 420px) { .app-nav { gap: .12rem; padding: .25rem; } .app-nav [data-view] { font-size: .62rem; gap: .15rem; padding: .5rem .22rem; } .app-nav [data-view] svg { width: .78rem; height: .78rem; flex: none; } }
   </style>
 </head>
@@ -481,15 +489,16 @@
           <div class="space-y-2">
             <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Vista previa</p>
             <article class="budget-preview p-5 sm:p-7" aria-live="polite">
-              <div class="flex items-start justify-between gap-3 border-b border-[#c9bfae] pb-5">
+              <div class="budget-preview-head flex items-start justify-between gap-3 border-b border-[#c9bfae] pb-5">
                 <img id="budget-pdf-logo" src="presupuesto-logo.jpg" alt="Cárdenas y Asociados" class="h-16 w-20 object-contain sm:h-20 sm:w-24">
                 <div class="text-right"><h3 class="text-lg font-bold leading-tight text-[#0a1f52] sm:text-xl">PRESUPUESTO</h3><p class="text-[10px] font-semibold text-[#0a1f52] sm:text-xs">DE HONORARIOS PROFESIONALES</p><p id="budget-preview-mode" class="mt-2 text-[9px] font-bold uppercase tracking-wide text-[#c99614]">HONORARIOS FIJADOS EN PESOS</p></div>
               </div>
               <div class="mt-5 space-y-5 text-xs leading-relaxed sm:text-sm">
+                <p id="budget-preview-issued" class="text-[10px] text-[#687287]"></p>
                 <div><p class="budget-preview-label">Objeto del presupuesto</p><p id="budget-preview-scope" class="mt-2 break-words">Completá el objeto o etapa presupuestada.</p></div>
                 <div><p class="budget-preview-label">Honorarios</p><p id="budget-preview-amount" class="budget-amount mt-2 break-words text-2xl font-bold text-[#0a1f52]">—</p><p id="budget-preview-detail" class="mt-1 text-[#687287]">Ingresá el importe de cada cuota y la cantidad.</p></div>
-                <div><p class="budget-preview-label">Cronograma de pagos</p><div class="mt-2 grid grid-cols-[2.5rem_1fr_1.2fr] gap-2 border-b border-[#0a1f52] pb-1 text-[10px] font-bold text-[#0a1f52]"><span>CUOTA</span><span>IMPORTE</span><span>VENCIMIENTO</span></div><div id="budget-preview-rows" class="divide-y divide-[#e6ded0] text-[10px] sm:text-xs"><p class="py-2 text-[#687287]">Completá los importes para ver las cuotas.</p></div></div>
-                <div id="budget-preview-costs-wrap" class="hidden"><p class="budget-preview-label">Costos</p><div id="budget-preview-costs" class="mt-2 divide-y divide-[#e6ded0] text-[10px] sm:text-xs"></div><p id="budget-preview-cost-total" class="mt-2 font-bold text-[#0a1f52]"></p><p id="budget-preview-grand-total" class="mt-1 font-bold text-[#0a1f52]"></p></div>
+                <div id="budget-preview-costs-wrap" class="hidden"><p class="budget-preview-label">Costos y total</p><div id="budget-preview-costs" class="mt-2 divide-y divide-[#e6ded0] text-xs"></div><p id="budget-preview-cost-total" class="mt-2 font-bold text-[#0a1f52]"></p><p id="budget-preview-grand-total" class="mt-1 font-bold text-[#0a1f52]"></p></div>
+                <div><p class="budget-preview-label">Cronograma de pagos</p><div class="budget-preview-payments-head mt-2 border-b border-[#0a1f52] pb-1 text-[10px] font-bold text-[#0a1f52]"><span>N.º</span><span>IMPORTE</span><span>VENCIMIENTO</span></div><div id="budget-preview-rows" class="divide-y divide-[#e6ded0] text-[10px] sm:text-xs"><p class="py-2 text-[#687287]">Completá los importes para ver las cuotas.</p></div><button id="budget-preview-toggle" type="button" class="mt-2 hidden min-h-10 w-full rounded-lg border border-[#c9bfae] px-3 py-2 text-xs font-bold text-[#0a1f52] transition hover:bg-[#f2eadc]" aria-expanded="false"></button><p id="budget-preview-schedule-note" class="mt-2 hidden text-[10px] text-[#687287]"></p></div>
                 <div><p class="budget-preview-label">Condiciones</p><p id="budget-preview-conditions" class="mt-2 break-words">Los gastos, tasas y honorarios de otros profesionales no están incluidos salvo indicación expresa.</p></div>
                 <div id="budget-preview-notes-wrap" class="hidden"><p class="budget-preview-label">Aclaraciones</p><p id="budget-preview-notes" class="mt-2 break-words"></p></div>
               </div>
@@ -1009,6 +1018,7 @@
     const budgetDate = (date) => `${String(date.getDate()).padStart(2, "0")}/${String(date.getMonth() + 1).padStart(2, "0")}/${date.getFullYear()}`;
     const nextBudgetMonth = (date, months, day) => new Date(date.getFullYear(), date.getMonth() + months, Math.min(day, new Date(date.getFullYear(), date.getMonth() + months + 1, 0).getDate()));
     let budgetCostIndex = 0;
+    let budgetPreviewExpanded = false;
 
     function addBudgetCost() {
       const list = el("budget-cost-list");
@@ -1046,7 +1056,7 @@
       renderBudgetPreview();
     }
 
-    function readBudgetData() {
+    function readBudgetData({ allowIncompleteCosts = false } = {}) {
       const mode = el("budget-mode").value;
       const installmentAmount = Number(el("budget-amount").value);
       const installments = Number(el("budget-installments").value);
@@ -1072,22 +1082,26 @@
         return { number: index + 1, amount: exactInstallment, due };
       });
       let costCents = 0;
+      let costsPending = false;
       const costs = Array.from(document.querySelectorAll("#budget-cost-list .budget-cost-row"), (row) => {
         const concept = row.querySelector(".budget-cost-concept").value.trim();
         const costAmount = Number(row.querySelector(".budget-cost-amount").value);
         const when = row.querySelector(".budget-cost-when").value;
         const costDateValue = row.querySelector(".budget-cost-date").value;
-        if (!concept) throw new Error("Completá el concepto de cada costo.");
-        if (!Number.isFinite(costAmount) || costAmount <= 0 || costAmount > 1e12) throw new Error("Completá un importe válido para cada costo.");
-        if (when === "date" && !costDateValue) throw new Error("Elegí la fecha de pago del costo.");
+        if (!concept || !Number.isFinite(costAmount) || costAmount <= 0 || costAmount > 1e12 || (when === "date" && !costDateValue)) {
+          if (allowIncompleteCosts) { costsPending = true; return null; }
+          if (!concept) throw new Error("Completá el concepto de cada costo.");
+          if (!Number.isFinite(costAmount) || costAmount <= 0 || costAmount > 1e12) throw new Error("Completá un importe válido para cada costo.");
+          throw new Error("Elegí la fecha de pago del costo.");
+        }
         const cents = Math.round(costAmount * 100);
         costCents += cents;
         if (!Number.isSafeInteger(costCents)) throw new Error("El total de costos supera el límite admitido.");
         const due = when === "acceptance" ? "Al aceptar el presupuesto" : when === "firstinstallment" ? `Con la primera cuota (${rows[0].due})` : budgetDate(new Date(costDateValue + "T12:00:00"));
         return { concept, amount: cents / 100, due };
-      });
+      }).filter(Boolean);
       return {
-        mode, amount, installmentAmount: exactInstallment, installments, umaValue, rows, costs, costTotal: costCents / 100, firstDueRule,
+        mode, amount, installmentAmount: exactInstallment, installments, umaValue, rows, costs, costsPending, costTotal: costCents / 100, firstDueRule,
         scope: el("budget-scope").value.trim(),
         notes: el("budget-notes").value.trim(),
         byDate, firstDue
@@ -1100,6 +1114,7 @@
       const installments = Number(el("budget-installments").value) || 1;
       const amount = installmentAmount * installments;
       const notes = el("budget-notes").value.trim();
+      el("budget-preview-issued").textContent = `Emitido el ${budgetDate(new Date())}`;
       el("budget-preview-mode").textContent = mode === "uma" ? "HONORARIOS EN UMA ACTUALIZABLES" : "HONORARIOS FIJADOS EN PESOS";
       el("budget-preview-scope").textContent = el("budget-scope").value.trim() || "Completá el objeto o etapa presupuestada.";
       el("budget-preview-amount").textContent = amount > 0 ? mode === "uma" ? budgetUma(amount) : budgetPesos(amount) : "—";
@@ -1111,23 +1126,34 @@
       el("budget-preview-notes").textContent = notes;
       const rows = el("budget-preview-rows");
       rows.replaceChildren();
+      const scheduleToggle = el("budget-preview-toggle");
+      const scheduleNote = el("budget-preview-schedule-note");
+      scheduleToggle.classList.add("hidden");
+      scheduleNote.classList.add("hidden");
       const costRows = el("budget-preview-costs");
       costRows.replaceChildren();
       el("budget-preview-costs-wrap").classList.toggle("hidden", !hasCosts);
       try {
-        const data = readBudgetData();
-        data.rows.forEach((row) => {
-          const item = create("div", "grid grid-cols-[2.5rem_1fr_1.2fr] gap-2 py-2");
+        const data = readBudgetData({ allowIncompleteCosts: true });
+        const hasMoreRows = data.rows.length > 6;
+        (hasMoreRows && !budgetPreviewExpanded ? data.rows.slice(0, 6) : data.rows).forEach((row) => {
+          const item = create("div", "budget-preview-payment-row py-2");
           item.append(create("span", "", String(row.number)), create("span", "", mode === "uma" ? budgetUma(row.amount) : budgetPesos(row.amount)), create("span", "", row.due));
           rows.append(item);
         });
+        scheduleToggle.classList.toggle("hidden", !hasMoreRows);
+        scheduleToggle.textContent = budgetPreviewExpanded ? "Mostrar menos cuotas" : `Ver las ${data.rows.length} cuotas`;
+        scheduleToggle.setAttribute("aria-expanded", String(hasMoreRows && budgetPreviewExpanded));
+        scheduleNote.classList.toggle("hidden", !hasMoreRows || budgetPreviewExpanded);
+        scheduleNote.textContent = hasMoreRows ? `La vista previa muestra las primeras 6; el PDF incluye las ${data.rows.length} cuotas.` : "";
         data.costs.forEach((cost) => {
           const item = create("div", "py-2");
           item.append(create("strong", "block break-words text-[#0a1f52]", `${cost.concept}: ${budgetPesos(cost.amount)}`), create("span", "block break-words text-[#687287]", cost.due));
           costRows.append(item);
         });
-        el("budget-preview-cost-total").textContent = hasCosts ? `Total de costos: ${budgetPesos(data.costTotal)}` : "";
-        el("budget-preview-grand-total").textContent = hasCosts ? `${mode === "uma" ? "Total estimado hoy" : "Total honorarios y costos"}: ${budgetPesos((mode === "uma" ? data.amount * data.umaValue : data.amount) + data.costTotal)}` : "";
+        if (data.costsPending) costRows.append(create("p", "py-2 text-[#687287]", "Completá el concepto, importe y momento de pago del costo pendiente."));
+        el("budget-preview-cost-total").textContent = hasCosts && !data.costsPending ? `Total de costos: ${budgetPesos(data.costTotal)}` : "";
+        el("budget-preview-grand-total").textContent = hasCosts && !data.costsPending ? `${mode === "uma" ? "Total estimado hoy" : "Total honorarios y costos"}: ${budgetPesos((mode === "uma" ? data.amount * data.umaValue : data.amount) + data.costTotal)}` : "";
       } catch {
         rows.append(create("p", "py-2 text-[#687287]", "Completá los importes para ver las cuotas."));
         if (hasCosts) costRows.append(create("p", "py-2 text-[#687287]", "Completá el concepto y el importe de cada costo."));
@@ -2526,6 +2552,7 @@
 
     renderSiteLinks();
     el("budget-form").addEventListener("input", renderBudgetPreview);
+    el("budget-preview-toggle").addEventListener("click", () => { budgetPreviewExpanded = !budgetPreviewExpanded; renderBudgetPreview(); });
     el("budget-add-cost").addEventListener("click", addBudgetCost);
     el("budget-mode").addEventListener("change", () => {
       el("budget-amount").value = "";
