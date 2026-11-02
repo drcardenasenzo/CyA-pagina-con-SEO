@@ -46,7 +46,8 @@
         const href = link.getAttribute("href") || "";
         const match = href.match(/(?:phone=|\/)([0-9]{10,15})/);
         const phone = match ? match[1] : "5491131166233";
-        link.href = `https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
+        const next = `https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
+        if (link.href !== next) link.href = next;
       });
   };
 
@@ -64,4 +65,10 @@
     },
     true,
   );
+
+  // An older GTM tag may rewrite the link after the page has loaded.
+  new MutationObserver((changes) => {
+    if (changes.some((change) => change.type === "childList" || change.target.matches?.('a[href*="wa.me"],a[href*="api.whatsapp.com"]')))
+      applyEnglishWhatsAppMessage();
+  }).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ["href"] });
 })();

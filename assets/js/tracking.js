@@ -35,7 +35,8 @@
     const text=encodeURIComponent(raw);
     document.querySelectorAll('a[href*="wa.me"],a[href*="api.whatsapp.com"]').forEach(link=>{
       const href=link.getAttribute('href')||''; const m=href.match(/(?:phone=|\/)([0-9]{10,15})/); const phone=m?m[1]:'5491131166233';
-      link.href=`https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
+      const next=`https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
+      if(link.href!==next)link.href=next;
     });
   }
   const params=new URLSearchParams(location.search); const incoming=params.get('gclid');
@@ -47,4 +48,8 @@
     const link=event.target.closest?.('a[href*="wa.me"],a[href*="api.whatsapp.com"]');
     if(link)updateWhatsAppLinks(gclid,time);
   },true);
+  new MutationObserver(changes=>{
+    if(changes.some(change=>change.type==='childList'||change.target.matches?.('a[href*="wa.me"],a[href*="api.whatsapp.com"]')))
+      updateWhatsAppLinks(gclid,time);
+  }).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['href']});
 })();
