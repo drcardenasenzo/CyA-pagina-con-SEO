@@ -1,0 +1,13 @@
+/* Solo el prototipo local de ART. Los componentes base se heredan del sitio. */
+.art-page .article-card-body p { margin-top: .8rem; }
+.art-page .about-grid > div:last-child > p + p { margin-top: 1rem; }
+.art-page .about-grid .actions { margin-top: 1.8rem; }
+.art-page .article-content > p { text-align: justify; }
+.art-page .article-content > h2 { margin-top: 2.2rem; }
+.art-page .article-content .faq h2 { margin-top: 0; }
+.art-page .norms p { font-size: .92rem; }
+.art-page .admin-overlay.is-open { display: flex; }
+@media (max-width: 640px) {
+  .art-page .article-content > p { text-align: justify; hyphens: auto; }
+  .art-page .contact-method strong { overflow-wrap: anywhere; }
+}

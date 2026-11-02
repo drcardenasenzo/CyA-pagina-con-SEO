@@ -1,0 +1,12 @@
+.previsional-page .article-card-body h3 { margin-bottom: .6rem; }
+.previsional-page .article-card-body p { margin-top: .65rem; }
+.previsional-page .about-grid p + p { margin-top: 1rem; }
+.previsional-page .about-grid .actions { margin-top: 1.5rem; }
+.previsional-page .health-service-cards .card { min-height: 0; }
+.previsional-page .admin-overlay.is-open { display: flex; }
+.previsional-page .article-filters { display: flex; flex-wrap: wrap; gap: .65rem; }
+@media (max-width: 640px) {
+  .previsional-page .article-filters { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: .5rem; }
+  .previsional-page .article-filters::-webkit-scrollbar { display: none; }
+  .previsional-page .article-filters button { white-space: nowrap; flex: 0 0 auto; }
+}

@@ -1,0 +1,289 @@
+/* Ajustes exclusivos del prototipo local de Amparos de Salud.
+   La identidad principal se hereda de /assets/css/site.css. */
+
+.health-page .section > .container,
+.health-page .page-hero > .container {
+  width: min(100%, 1180px);
+  margin-inline: auto;
+}
+
+.health-page .section-intro {
+  max-width: 850px;
+  margin: -0.75rem auto 2rem;
+  color: var(--gris-suave);
+  text-align: center;
+}
+
+.health-page .health-service-cards,
+.health-page .service-hub-grid,
+.health-page .process-grid,
+.health-page .article-grid {
+  align-items: stretch;
+}
+
+.health-page .health-service-cards,
+.health-page .service-hub-grid {
+  grid-auto-rows: 1fr;
+}
+
+.health-page .health-service-cards .card,
+.health-page .service-hub-grid .card,
+.health-page .article-grid .article-card {
+  height: 100%;
+}
+
+.health-page .article-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.health-page .article-card[hidden] {
+  display: none !important;
+}
+
+.health-page .article-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.health-page .article-card-body p {
+  margin-top: auto;
+}
+
+.health-page .service-intro,
+.health-page .service-closing,
+.health-page .article-content,
+.health-page .service-faq .faq-answer p,
+.health-page .article-faq .faq-answer p,
+.health-page .about-grid > div:last-child > p,
+.health-page .contact-lead {
+  text-align: justify;
+}
+
+.health-page .service-intro {
+  max-width: 900px;
+  margin: 0 0 1.75rem;
+  color: var(--gris-oscuro);
+  font-size: 1.08rem;
+  line-height: 1.75;
+}
+
+.health-page .service-closing {
+  max-width: 900px;
+  margin-top: 1.5rem;
+  color: var(--gris-oscuro);
+  line-height: 1.75;
+}
+
+.health-page .service-list {
+  display: grid;
+  gap: 0.8rem;
+  max-width: 900px;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.health-page .service-list li {
+  position: relative;
+  padding: 1rem 1.1rem 1rem 2.8rem;
+  border: 1px solid rgba(7, 27, 61, 0.1);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--azul-profundo);
+  box-shadow: 0 10px 30px rgba(7, 27, 61, 0.05);
+}
+
+.health-page .service-list li::before {
+  position: absolute;
+  top: 1.05rem;
+  left: 1.05rem;
+  color: var(--dorado);
+  content: "•";
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.health-page .article-author a,
+.health-page .norms a,
+.health-page .related-service-link a {
+  color: var(--azul-profundo);
+}
+
+.health-page .article-author a:hover,
+.health-page .norms a:hover,
+.health-page .related-service-link a:hover {
+  color: var(--dorado-oscuro);
+}
+
+.health-page .related-service-link {
+  margin-top: 24px;
+}
+
+.health-page .article-controls .article-count {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+.health-page .article-image img,
+.health-page .article-card img {
+  background: #f4eadc;
+}
+
+.health-page .article-image img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.health-page .article-content p,
+.health-page .article-content li {
+  line-height: 1.78;
+}
+
+.health-page .norms {
+  margin-top: 2rem;
+  padding: 1.35rem 1.5rem;
+  border-left: 3px solid var(--dorado);
+  background: var(--crema);
+}
+
+.health-page .norms ul {
+  margin: 0.8rem 0 1rem;
+}
+
+.health-page .inline-cta {
+  margin-top: 2.2rem;
+  padding: clamp(1.4rem, 4vw, 2.2rem);
+  border: 1px solid rgba(205, 166, 91, 0.4);
+  border-radius: 18px;
+  background: var(--azul-profundo);
+  color: #fff;
+}
+
+.health-page .inline-cta h2,
+.health-page .inline-cta p {
+  color: #fff;
+}
+
+.health-page .contact-grid {
+  display: block;
+  max-width: 980px !important;
+}
+
+.health-page .contact-panel {
+  width: min(100%, 940px);
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.health-page .about-grid > div:last-child > p + p {
+  margin-top: 1rem;
+}
+
+.health-page .about-grid .actions {
+  margin-top: 2rem;
+}
+
+.health-page .contact-methods {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.8rem;
+}
+
+.health-page .contact-method {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.health-page .contact-method-label {
+  color: var(--dorado-oscuro);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.health-page .contact-method strong {
+  max-width: 100%;
+  color: var(--azul-profundo);
+  overflow-wrap: anywhere;
+}
+
+.health-page .contact-method small {
+  margin-top: 0.4rem;
+  color: var(--gris-suave);
+}
+
+.health-page .contact-jurisdiction {
+  margin-top: 1.5rem;
+}
+
+.health-page .site-footer {
+  padding-bottom: 0;
+}
+
+.health-page .menu-toggle:focus,
+.health-page .menu-toggle:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* En escritorio las seis tarjetas forman una grilla estable de tres por fila. */
+@media (min-width: 900px) {
+  .health-page #servicios .health-service-cards[data-service-stack] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+  }
+
+  .health-page #servicios .health-service-cards[data-service-stack] .card,
+  .health-page.service-page [data-service-article-stack] .article-card {
+    position: relative;
+    top: auto;
+    height: 100%;
+  }
+}
+
+/* En las páginas de servicios las tarjetas relacionadas conservan altura pareja. */
+.health-page.service-page [data-service-article-stack] .article-card-body p {
+  margin-top: auto;
+}
+
+@media (max-width: 767px) {
+  .health-page .about-grid .portrait {
+    width: min(100%, 250px);
+    justify-self: center;
+    margin-inline: auto;
+  }
+
+  .health-page .article-card-body {
+    min-height: 0;
+  }
+
+  .health-page .contact-methods {
+    grid-template-columns: 1fr;
+  }
+
+  .health-page .service-intro,
+  .health-page .service-closing,
+  .health-page .article-content,
+  .health-page .service-faq .faq-answer p,
+  .health-page .article-faq .faq-answer p,
+  .health-page .about-grid > div:last-child > p,
+  .health-page .contact-lead {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+}
+
+@media (max-width: 390px) {
+  .health-page .contact-method-email strong {
+    font-size: clamp(0.72rem, 3.55vw, 0.92rem);
+    overflow-wrap: normal;
+    white-space: nowrap;
+  }
+}

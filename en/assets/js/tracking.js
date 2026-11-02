@@ -26,7 +26,7 @@
     const tracking = gclid && time
       ? ` My automatic enquiry code is: GCLID ${gclid}; TIME ${time}. [Please do not delete].`
       : "";
-    return `Hello! I am contacting Cárdenas & Associates through the English-language website.${tracking} I need advice about a legal matter connected to Argentina. Please note: you may receive an automatic reply in Spanish, but you can write or send a voice message in English. The lawyer will reply in English. My enquiry is: `;
+    return `Hello! *EN* — I am contacting Cárdenas & Associates through the English-language website.${tracking} I need advice about a legal matter connected to Argentina. Please note: you may receive an automatic reply in Spanish, but you can write or send a voice message in English. The lawyer will reply in English. My enquiry is: `;
   };
 
   const params = new URLSearchParams(window.location.search);
